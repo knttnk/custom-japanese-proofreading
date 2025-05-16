@@ -13,14 +13,13 @@
     "theme": "dark"
   },
   "license": "MIT",
-  "homepage": "https://github.com/ics-creative/project-japanese-proofreading/blob/master/README.md",
+  "homepage": "https://github.com/knttnk/custom-japanese-proofreading",
   "bugs": {
-    "url": "https://github.com/ics-creative/project-japanese-proofreading/issues",
-    "email": "maya.watanabe@ics-web.jp"
+    "url": "https://github.com/knttnk/custom-japanese-proofreading/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ics-creative/project-japanese-proofreading.git"
+    "url": "https://github.com/knttnk/custom-japanese-proofreading.git"
   },
   "categories": [
     "Linters",
