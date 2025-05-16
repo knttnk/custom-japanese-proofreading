@@ -23,7 +23,7 @@ import {
   CodeActionParams,
 } from "vscode-languageserver/node";
 import { URI } from "vscode-uri";
-import * as HTMLPlugin from "textlint-plugin-html";
+import HTMLPlugin from "textlint-plugin-html";
 import LatexPlugin from "textlint-plugin-latex2e";
 import ReviewPlugin from "textlint-plugin-review";
 import { DEFAULT_EXTENSION_RULES } from "./rules/rule";

@@ -231,7 +231,7 @@
   },
   "dependencies": {
     "textlint": "^14.7.1",
-    "textlint-plugin-html": "^0.3.0",
+    "textlint-plugin-html": "^1.0.1",
     "textlint-plugin-latex2e": "^1.2.1",
     "textlint-plugin-review": "^0.4.1",
     "textlint-rule-preset-icsmedia": "github:ics-creative/textlint-rule-preset-icsmedia",
