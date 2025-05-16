@@ -235,12 +235,12 @@
     "textlint-plugin-latex2e": "^1.2.1",
     "textlint-plugin-review": "^0.4.1",
     "textlint-rule-preset-icsmedia": "github:ics-creative/textlint-rule-preset-icsmedia",
-    "textlint-rule-preset-japanese": "^7.0.0",
-    "textlint-rule-preset-jtf-style": "^2.3.13",
-    "textlint-rule-prh": "^5.3.0",
-    "vscode-languageclient": "^8.0.2",
-    "vscode-languageserver": "^8.0.2",
-    "vscode-languageserver-textdocument": "^1.0.8",
-    "vscode-uri": "^3.0.7"
+    "textlint-rule-preset-japanese": "^10.0.4",
+    "textlint-rule-preset-jtf-style": "^3.0.2",
+    "textlint-rule-prh": "^6.1.0",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "vscode-uri": "^3.1.0"
   }
 }
