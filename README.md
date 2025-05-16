@@ -1,6 +1,6 @@
 # カスタム日本語校正
 
-[カスタム日本語校正](https://github.com/ics-creative/project-japanese-proofreading)のv0.1.6をベースにしています。
+[テキスト校正くん](https://github.com/ics-creative/project-japanese-proofreading)のv0.1.6をベースにしています。
 これをカスタムできるようにしたのがこの拡張機能です。
 
 VS Code上でテキストファイル・Markdownファイル・Re:VIEWファイル・LaTeXファイルの日本語の文章をチェックする拡張機能です。
