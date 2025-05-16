@@ -220,17 +220,17 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/vscode": "^1.74.0",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.4",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.2",
-    "typescript": "^4.9.4"
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "textlint": "^12.5.1",
+    "textlint": "^14.7.1",
     "textlint-plugin-html": "^0.3.0",
     "textlint-plugin-latex2e": "^1.2.0",
     "textlint-plugin-review": "^0.4.1",
