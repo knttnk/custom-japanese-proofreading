@@ -222,7 +222,7 @@ const validateTextDocument = async (
 
       // エラーのルールが「不自然な濁点」か？
       const isRuleNoNfd = message.ruleId === "japanese/no-nfd";
-      if(isRuleNoNfd) {
+      if (isRuleNoNfd) {
         // ルール「不自然な濁点」は、修正テキストを1文字ずらして生成していると思われるため、エラー開始位置も1文字ずらしたい
         startCharacterDiff = -1;
       }
