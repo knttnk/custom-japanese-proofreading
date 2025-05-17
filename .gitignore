@@ -1,10 +1,4 @@
 out
 node_modules
-.vscode-test/
-*.vsix
-
-.DS_Store
-Thumbs.db
-.idea
-
-yarn.lock
+client/server
+.vscode-test

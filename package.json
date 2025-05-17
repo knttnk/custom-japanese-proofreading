@@ -1,246 +1,255 @@
 {
-  "name": "custom-japanese-proofreading",
-  "displayName": "カスタム日本語校正",
-  "description": "テキストファイルやMarkdownファイルの日本語を、カスタムルールでチェックできる拡張機能",
-  "version": "0.1.0",
-  "publisher": "knttnk",
-  "engines": {
-    "vscode": "^1.74.3"
-  },
-  "icon": "images/icon.png",
-  "galleryBanner": {
-    "color": "#424242",
-    "theme": "dark"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/knttnk/custom-japanese-proofreading",
-  "bugs": {
-    "url": "https://github.com/knttnk/custom-japanese-proofreading/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/knttnk/custom-japanese-proofreading.git"
-  },
-  "categories": [
-    "Linters",
-    "Other"
-  ],
-  "activationEvents": [
-    "onLanguage:html",
-    "onLanguage:latex",
-    "onLanguage:review",
-    "onLanguage:markdown",
-    "onLanguage:plaintext"
-  ],
-  "main": "./out/extension",
-  "contributes": {
-    "configuration": {
-      "type": "object",
-      "title": "カスタム日本語校正",
-      "properties": {
-        "custom-japanese-proofreading.maxNumberOfProblems": {
-          "scope": "resource",
-          "type": "number",
-          "default": 100,
-          "description": "校正チェックを行う、1ドキュメント辺りの最大指摘数です。"
-        },
-        "custom-japanese-proofreading.trace.server": {
-          "scope": "window",
-          "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off",
-          "description": "VS Codeと言語サーバー間通信のトレース設定です。"
-        },
-        "custom-japanese-proofreading.textlint.誤字": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（間違いやすい慣用表現をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.重言": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（同じ意味の言葉を重ねていないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ひらく漢字": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（漢字の閉じ開きをチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.冗長な表現": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（冗長な日本語表現がないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.外来語カタカナ表記": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（外来語カタカナ表記の語尾の長音表記をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.固有名詞": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（社名やブランド名などの固有名詞の表記をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.技術用語": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（ウェブ技術に関する固有名詞の表記をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.読点の数": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（一つの文で\"、\"を4つ以上使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.助詞の連続": {
-          "type": "boolean",
-          "default": false,
-          "description": "有効（同じ助詞を連続して使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ピリオドとカンマの使用（半角）": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（和文の句読点に半角ピリオド(.)や半角カンマ(,)を使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ピリオドとカンマの使用（全角）": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（和文の句読点に全角ピリオド(．)や全角カンマ(，)を使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.算用数字": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（算用数字が半角で表記されているかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.アルファベット": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（アルファベットが半角で表記されているかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.算用数字と漢数字の使い分け": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（算用数字と漢数字の使い分けをチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.一部の助数詞の表記": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（助数詞にともなう「ヵ」「か」「カ」「ヶ」「ケ」「箇」「個」の表記で「か」を使用しているかチェックします。）"
-        },
-        "custom-japanese-proofreading.textlint.全角文字と半角文字の間": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（全角文字と半角文字の間にスペースを入れていないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.全角文字どうし": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（全角文字どうしの間にスペースを入れていないかをチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.かっこ類と隣接する文字の間のスペースの有無": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（かっこの外側、内側ともにスペースを入れていないかをチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.疑問符(？)": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（疑問符の後に別の文が続く場合、全角スペースが入っているかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ハイフン(-)": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（和文にハイフンを使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ダッシュ(-)": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（和文にダッシュを使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.丸かっこ（）": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（半角の丸かっこを使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.大かっこ［］": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（半角の大かっこを使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ら抜き言葉": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（ら抜き言葉をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.二重否定": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（二重否定をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.不自然な濁点": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（「エンシ゛ン」のような不自然な濁点をチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.康煕部首": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（康煕部首に含まれる漢字を使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.逆接の「が」の複数回出現": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（逆接の接続助詞「が」が、同一文中に複数回出現していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.制御文字": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（制御文字を使用していないかチェックします）"
-        },
-        "custom-japanese-proofreading.textlint.ゼロ幅スペース": {
-          "type": "boolean",
-          "default": true,
-          "description": "有効（ゼロ幅スペースを使用していないかチェックします）"
-        }
-      }
-    }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "lint": "eslint src --ext .ts",
-    "format": "eslint src --ext .ts --fix",
-    "update-dictionary": "npm uninstall textlint-rule-preset-icsmedia && npm i ics-creative/textlint-rule-preset-icsmedia",
-    "vsce:package": "vsce package"
-  },
-  "devDependencies": {
-    "@types/node": "^22.15.18",
-    "@types/vscode": "^1.74.0",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "eslint": "^9.26.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.4.0",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "textlint": "^14.7.1",
-    "textlint-plugin-html": "^1.0.1",
-    "textlint-plugin-latex2e": "^1.2.1",
-    "textlint-plugin-review": "^0.4.1",
-    "textlint-rule-preset-icsmedia": "github:ics-creative/textlint-rule-preset-icsmedia",
-    "textlint-rule-preset-japanese": "^10.0.4",
-    "textlint-rule-preset-jtf-style": "^3.0.2",
-    "textlint-rule-prh": "^6.1.0",
-    "vscode-languageclient": "^9.0.1",
-    "vscode-languageserver": "^9.0.1",
-    "vscode-languageserver-textdocument": "^1.0.12",
-    "vscode-uri": "^3.1.0"
-  }
+	"name": "custom-japanese-proofreading",
+	"displayName": "カスタム日本語校正",
+	"description": "テキストファイルやMarkdownファイルの日本語を、カスタムルールでチェックできる拡張機能",
+	"author": "knttnk",
+	"publisher": "knttnk",
+	"license": "MIT",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#424242",
+		"theme": "dark"
+	},
+	"version": "0.1.0",
+	"homepage": "https://github.com/knttnk/custom-japanese-proofreading",
+	"bugs": {
+		"url": "https://github.com/knttnk/custom-japanese-proofreading/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/knttnk/custom-japanese-proofreading.git"
+	},
+	"categories": [
+		"Linters",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:html",
+		"onLanguage:latex",
+		"onLanguage:review",
+		"onLanguage:markdown",
+		"onLanguage:plaintext"
+	],
+	"keywords": [
+		"Japanese",
+		"proofreading",
+		"linter",
+		"linting",
+		"spell",
+		"grammar",
+		"check",
+		"custom",
+		"日本語",
+		"校正",
+		"静的解析",
+		"スペル",
+		"誤字",
+		"文法",
+		"チェック",
+		"カスタム"
+	],
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"main": "./client/out/extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "カスタム日本語校正",
+			"properties": {
+				"custom-japanese-proofreading.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "校正チェックを行う、1ドキュメント辺りの最大指摘数です。"
+				},
+				"custom-japanese-proofreading.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "VS Codeと言語サーバー間通信のトレース設定です。"
+				},
+				"custom-japanese-proofreading.textlint.誤字": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（間違いやすい慣用表現をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.重言": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（同じ意味の言葉を重ねていないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ひらく漢字": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（漢字の閉じ開きをチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.冗長な表現": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（冗長な日本語表現がないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.外来語カタカナ表記": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（外来語カタカナ表記の語尾の長音表記をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.固有名詞": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（社名やブランド名などの固有名詞の表記をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.技術用語": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（ウェブ技術に関する固有名詞の表記をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.読点の数": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（一つの文で\"、\"を4つ以上使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.助詞の連続": {
+					"type": "boolean",
+					"default": false,
+					"description": "有効（同じ助詞を連続して使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ピリオドとカンマの使用（半角）": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（和文の句読点に半角ピリオド(.)や半角カンマ(,)を使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ピリオドとカンマの使用（全角）": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（和文の句読点に全角ピリオド(．)や全角カンマ(，)を使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.算用数字": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（算用数字が半角で表記されているかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.アルファベット": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（アルファベットが半角で表記されているかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.算用数字と漢数字の使い分け": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（算用数字と漢数字の使い分けをチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.一部の助数詞の表記": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（助数詞にともなう「ヵ」「か」「カ」「ヶ」「ケ」「箇」「個」の表記で「か」を使用しているかチェックします。）"
+				},
+				"custom-japanese-proofreading.textlint.全角文字と半角文字の間": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（全角文字と半角文字の間にスペースを入れていないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.全角文字どうし": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（全角文字どうしの間にスペースを入れていないかをチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.かっこ類と隣接する文字の間のスペースの有無": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（かっこの外側、内側ともにスペースを入れていないかをチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.疑問符(？)": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（疑問符の後に別の文が続く場合、全角スペースが入っているかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ハイフン(-)": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（和文にハイフンを使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ダッシュ(-)": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（和文にダッシュを使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.丸かっこ（）": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（半角の丸かっこを使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.大かっこ［］": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（半角の大かっこを使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ら抜き言葉": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（ら抜き言葉をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.二重否定": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（二重否定をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.不自然な濁点": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（「エンシ゛ン」のような不自然な濁点をチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.康煕部首": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（康煕部首に含まれる漢字を使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.逆接の「が」の複数回出現": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（逆接の接続助詞「が」が、同一文中に複数回出現していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.制御文字": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（制御文字を使用していないかチェックします）"
+				},
+				"custom-japanese-proofreading.textlint.ゼロ幅スペース": {
+					"type": "boolean",
+					"default": true,
+					"description": "有効（ゼロ幅スペースを使用していないかチェックします）"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"lint": "eslint",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+		"test": "sh ./scripts/e2e.sh"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.13.0",
+		"@stylistic/eslint-plugin": "^2.9.0",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "^20",
+		"eslint": "^9.13.0",
+		"mocha": "^10.3.0",
+		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.26.0",
+		"@types/vscode": "^1.75.0",
+		"@typescript-eslint/eslint-plugin": "^8.32.1",
+		"@typescript-eslint/parser": "^8.32.1",
+		"eslint-config-prettier": "^10.1.5",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-prettier": "^5.4.0",
+		"prettier": "^3.5.3"
+	}
 }
