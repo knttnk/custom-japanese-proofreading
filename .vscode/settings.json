@@ -4,5 +4,20 @@
 	"typescript.preferences.quoteStyle": "single",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
+	},
+	"files.exclude": {
+		// コンパイルとかは無視するとき
+		"**/node_modules": true,
+		"**/out": true,
+		// 各種設定ファイル
+		"**/{tsconfig.*,.editorconfig,.eslintrc.js,.prettierrc,.node-version,.vscodeignore,eslint.config.mjs}": true,
+		// パッケージ管理ファイル
+		"**/{package.json,package-lock.json,yarn.lock}": true,
+	},
+	"files.readonlyInclude": {
+		// 自動生成ファイル
+		"**/node_modules": true,
+		"**/out": true,
+		"**/package-lock.json": true,
 	}
 }
