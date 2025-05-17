@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2020",
+		"lib": ["es2020"],
+		"sourceMap": true,
+		"declaration": true,
+		"composite": true,
+		"declarationMap": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"rootDir": "${configDir}/src",
+		"outDir": "${configDir}/out"
+	},
+	"include": [
+		"${configDir}/src"
+	],
+	"exclude": [
+		"${configDir}/node_modules"
+	]
+}
