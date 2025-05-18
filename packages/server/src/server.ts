@@ -29,8 +29,8 @@ import { DEFAULT_EXTENSION_RULES } from "./rules/rule";
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
-
-const APP_NAME = "カスタム日本語校正";
+import { APP_NAME } from '@custom-japanese-proofreading/common';
+// const APP_NAME = "カスタム日本語校正";
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
