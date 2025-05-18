@@ -4,6 +4,7 @@ import { createLinter, loadTextlintrc } from "textlint";
 import { configPath } from "textlint-rule-preset-icsmedia";
 import {
 	createConnection,
+	Connection,
 	TextDocuments,
 	Diagnostic,
 	DiagnosticSeverity,
@@ -24,31 +25,24 @@ import { URI } from "vscode-uri";
 import HTMLPlugin from "textlint-plugin-html";
 import LatexPlugin from "textlint-plugin-latex2e";
 import ReviewPlugin from "textlint-plugin-review";
-import { DEFAULT_EXTENSION_RULES } from "./rules/rule";
 
-import {
-	TextDocument
-} from 'vscode-languageserver-textdocument';
-import { APP_NAME, APP_ID } from '@custom-japanese-proofreading/common';
+import { TextDocument } from 'vscode-languageserver-textdocument';
+import { APP_NAME, APP_ID, UserSettings } from '@custom-japanese-proofreading/common';
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
-const connection = createConnection(ProposedFeatures.all);
+const connection: Connection = createConnection(ProposedFeatures.all);
 
 // テキストドキュメントを管理するクラスを作成します。
 const documents = new TextDocuments<TextDocument>(TextDocument);
 
-let hasConfigurationCapability = false;
-// TODO: 理解してもしかしたらコメント解除
-// let hasWorkspaceFolderCapability = false;
-// let hasDiagnosticRelatedInformationCapability = false;
+// VSCode側の設定
+const userSettings = UserSettings.getInstanceWithConnection(connection);
 
 connection.onInitialize((params: InitializeParams) => {
 	const capabilities = params.capabilities;
 
-	// クライアントが `workspace/configuration` リクエストをサポートしているか
-	// サポートしていない場合は、グローバル設定を使用
-	hasConfigurationCapability = !!(
+	userSettings.hasConfigurationCapability = !!(
 		capabilities.workspace && !!capabilities.workspace.configuration
 	);
 	// hasWorkspaceFolderCapability = !!(
@@ -78,7 +72,7 @@ connection.onInitialize((params: InitializeParams) => {
 });
 
 connection.onInitialized(() => {
-	if (hasConfigurationCapability) {
+	if (userSettings.hasConfigurationCapability) {
 		// すべての設定変更を登録
 		connection.client.register(DidChangeConfigurationNotification.type, undefined);
 	}
@@ -89,41 +83,6 @@ connection.onInitialized(() => {
 	// 	});
 	// }
 });
-
-const getDefaultTextlintSettings = () => {
-	const mySettings: Record<string, boolean> = {};
-
-	DEFAULT_EXTENSION_RULES.forEach((value) => {
-		mySettings[value.ruleName] = value.enabled;
-	});
-
-	return mySettings;
-};
-
-/**
- * VSCode側の設定
- */
-interface ITextlintSettings {
-	/** 問題を表示する最大数 */
-	maxNumberOfProblems: number;
-	/**
-	 * textlintの設定
-	 * trueとなっているルールを適用します。
-	 */
-	textlint: Record<string, boolean>;
-}
-
-// `workspace/configuration` リクエストがサポートされていない場合に使用されるグローバル設定
-// このサーバーをこの例で提供されるクライアントで使用する場合は当てはまりませんが、
-// 他のクライアントで発生する可能性があります。
-const defaultSettings: ITextlintSettings = {
-	maxNumberOfProblems: 1000,
-	textlint: getDefaultTextlintSettings(),
-};
-let globalSettings: ITextlintSettings = defaultSettings;
-
-// すべてのドキュメントの設定をキャッシュ
-const documentSettings = new Map<string, Thenable<ITextlintSettings>>();
 
 /**
  * コードアクションのハンドラです。
@@ -147,12 +106,11 @@ connection.onCodeAction((params: CodeActionParams) => {
 });
 
 connection.onDidChangeConfiguration((change) => {
-	if (hasConfigurationCapability) {
+	if (userSettings.hasConfigurationCapability) {
 		// Reset all cached document settings
-		documentSettings.clear();
+		userSettings.ofDocuments.clear();
 	} else {
-		globalSettings = (change.settings[APP_ID] ||
-			defaultSettings) as ITextlintSettings;
+		userSettings.setValues(change.settings[APP_ID] || {});
 	}
 
 	// Revalidate all open text documents
@@ -160,27 +118,16 @@ connection.onDidChangeConfiguration((change) => {
 	documents.all().forEach(validateTextDocument);
 });
 
-/**
- * VSCode側の設定を取得します。
- */
-function getDocumentSettings(resource: string): Thenable<ITextlintSettings> {
-	if (!hasConfigurationCapability) {
-		return Promise.resolve(globalSettings);
-	}
-	let result = documentSettings.get(resource);
-	if (!result) {
-		result = connection.workspace.getConfiguration({
-			scopeUri: resource,
-			section: APP_ID,
-		});
-		documentSettings.set(resource, result);
-	}
-	return result;
-}
+documents.onDidOpen((open) => {
+	// ドキュメントを開いたときに、設定を取得します。
+	userSettings.cacheDocumentSettings(open.document.uri);
+	// ドキュメントの内容が変更された場合、バリデーションを実行します。
+	validateTextDocument(open.document);
+});
 
 // Only keep settings for open documents
 documents.onDidClose((close) => {
-	documentSettings.delete(close.document.uri);
+	userSettings.ofDocuments.delete(close.document.uri);
 	resetTextDocument(close.document);
 });
 
@@ -211,7 +158,7 @@ documents.onDidChangeContent(async (change) => {
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	// TODO: Promise<Diagnostic[]> として診断結果を返す書き方もできるみたい
 	// VSCode側の設定を取得
-	const settings = await getDocumentSettings(textDocument.uri);
+	// const settings = userSettings.getDocumentSettings(connection, textDocument.uri);
 
 	const document = textDocument.getText();
 
@@ -280,7 +227,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 			const text = `${message.message}（${message.ruleId}）`;
 
 			// 有効とされているエラーか？
-			if (!isTarget(settings, message.ruleId, message.message)) {
+			if (!userSettings.isTarget(textDocument, message.ruleId, message.message)) {
 				continue;
 			}
 
@@ -331,39 +278,6 @@ connection.onDidChangeWatchedFiles(_change => {
 	connection.console.log('ファイルの変更通知を受信');
 });
 
-/**
- * 設定で有効としているエラーかどうか判定します。
- * @param settings VSCode側の設定
- * @param targetRuleId エラーのルールID
- * @param message エラーメッセージ
- * @returns
- */
-const isTarget = (
-	settings: ITextlintSettings,
-	targetRuleId: string,
-	message: string,
-): boolean => {
-	let bool = false;
-	DEFAULT_EXTENSION_RULES.forEach((rule) => {
-		if (targetRuleId === "prh") {
-			// prhのルールの場合
-
-			// ruleIdからprh内の細かいルールを取得できないのでmessageに含まれているか取得している
-			const ruleIdSub = rule.ruleId.split("/")[1];
-			if (message.includes(`（${ruleIdSub}）`)) {
-				// VSCodeの設定に存在しないルールは、デフォルト設定を使用します。
-				bool = settings.textlint[rule.ruleName] ?? rule.enabled;
-			}
-		} else if (rule.ruleId.includes(targetRuleId)) {
-			// 使用するルールのIDとエラーのルールIDが一致する場合
-
-			// VSCodeの設定に存在しないルールは、デフォルト設定を使用します。
-			// 例: ですます調、jtf-style/1.2.2
-			bool = settings.textlint[rule.ruleName] ?? rule.enabled;
-		}
-	});
-	return bool;
-};
 
 /**
  * validate済みの内容を破棄します。

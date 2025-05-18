@@ -2,7 +2,10 @@
   "name": "@custom-japanese-proofreading/common",
   "version": "0.1.0",
   "description": "共通ライブラリ",
-  "main": "src/common.ts",
+  "exports": [
+    "./src/common.ts",
+    "./src/settings.ts"
+  ],
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
