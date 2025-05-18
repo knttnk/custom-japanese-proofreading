@@ -57,172 +57,185 @@
 			"type": "object",
 			"title": "カスタム日本語校正",
 			"properties": {
-				"custom-japanese-proofreading.maxNumberOfProblems": {
-					"scope": "resource",
+				"customJapaneseProofreading.maxNumberOfProblems": {
+					"scope": "language-overridable",
 					"type": "number",
 					"default": 100,
 					"description": "校正チェックを行う、1ドキュメント辺りの最大指摘数です。"
 				},
-				"custom-japanese-proofreading.trace.server": {
-					"scope": "window",
-					"type": "string",
-					"enum": [
-						"off",
-						"messages",
-						"verbose"
-					],
-					"default": "off",
-					"description": "VS Codeと言語サーバー間通信のトレース設定です。"
-				},
-				"custom-japanese-proofreading.textlint.誤字": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/max-ten": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（間違いやすい慣用表現をチェックします）"
+					"description": "許容できる最大の読点の数"
 				},
-				"custom-japanese-proofreading.textlint.重言": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-conjunctive-particle-ga": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（同じ意味の言葉を重ねていないかチェックします）"
+					"description": "逆接の「が」の複数回出現を許容しない"
 				},
-				"custom-japanese-proofreading.textlint.ひらく漢字": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-conjunction": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（漢字の閉じ開きをチェックします）"
+					"description": "接続詞の連続を許容しない"
 				},
-				"custom-japanese-proofreading.textlint.冗長な表現": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-double-negative-ja": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（冗長な日本語表現がないかチェックします）"
+					"description": "二重否定を許容しない"
 				},
-				"custom-japanese-proofreading.textlint.外来語カタカナ表記": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-joshi": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（外来語カタカナ表記の語尾の長音表記をチェックします）"
+					"description": "助詞の連続を許容しない"
 				},
-				"custom-japanese-proofreading.textlint.固有名詞": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-dropping-the-ra": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（社名やブランド名などの固有名詞の表記をチェックします）"
+					"description": "ら抜き言葉を許容しない"
 				},
-				"custom-japanese-proofreading.textlint.技術用語": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-mix-dearu-desumasu": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（ウェブ技術に関する固有名詞の表記をチェックします）"
+					"description": "ですます調とである調を混ぜない"
 				},
-				"custom-japanese-proofreading.textlint.読点の数": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-nfd": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（一つの文で\"、\"を4つ以上使用していないかチェックします）"
+					"description": "不自然な濁点を検出"
 				},
-				"custom-japanese-proofreading.textlint.助詞の連続": {
-					"type": "boolean",
-					"default": false,
-					"description": "有効（同じ助詞を連続して使用していないかチェックします）"
-				},
-				"custom-japanese-proofreading.textlint.ピリオドとカンマの使用（半角）": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-invalid-control-character": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（和文の句読点に半角ピリオド(.)や半角カンマ(,)を使用していないかチェックします）"
+					"description": "制御文字を検出"
 				},
-				"custom-japanese-proofreading.textlint.ピリオドとカンマの使用（全角）": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-zero-width-spaces": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（和文の句読点に全角ピリオド(．)や全角カンマ(，)を使用していないかチェックします）"
+					"description": "ゼロ幅スペースを検出"
 				},
-				"custom-japanese-proofreading.textlint.算用数字": {
+				"customJapaneseProofreading.textlintPreset.preset-japanese/no-kangxi-radicals": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（算用数字が半角で表記されているかチェックします）"
+					"description": "康煕部首を検出"
 				},
-				"custom-japanese-proofreading.textlint.アルファベット": {
+				"customJapaneseProofreading.textlintPreset.prh/goji": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（アルファベットが半角で表記されているかチェックします）"
+					"description": "【テキスト校正くん】誤字の検出"
 				},
-				"custom-japanese-proofreading.textlint.算用数字と漢数字の使い分け": {
+				"customJapaneseProofreading.textlintPreset.prh/jugen": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（算用数字と漢数字の使い分けをチェックします）"
+					"description": "【テキスト校正くん】重言の検出"
 				},
-				"custom-japanese-proofreading.textlint.一部の助数詞の表記": {
+				"customJapaneseProofreading.textlintPreset.prh/hiraku-kanji": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（助数詞にともなう「ヵ」「か」「カ」「ヶ」「ケ」「箇」「個」の表記で「か」を使用しているかチェックします。）"
+					"description": "【テキスト校正くん】開く漢字の検出"
 				},
-				"custom-japanese-proofreading.textlint.全角文字と半角文字の間": {
+				"customJapaneseProofreading.textlintPreset.prh/jocho": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（全角文字と半角文字の間にスペースを入れていないかチェックします）"
+					"description": "【テキスト校正くん】冗長な表現の検出"
 				},
-				"custom-japanese-proofreading.textlint.全角文字どうし": {
+				"customJapaneseProofreading.textlintPreset.prh/koyu-meishi": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（全角文字どうしの間にスペースを入れていないかをチェックします）"
+					"description": "【テキスト校正くん】固有名詞"
 				},
-				"custom-japanese-proofreading.textlint.かっこ類と隣接する文字の間のスペースの有無": {
+				"customJapaneseProofreading.textlintPreset.prh/technical-term": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（かっこの外側、内側ともにスペースを入れていないかをチェックします）"
+					"description": "【テキスト校正くん】技術用語"
 				},
-				"custom-japanese-proofreading.textlint.疑問符(？)": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.1.8.算用数字": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（疑問符の後に別の文が続く場合、全角スペースが入っているかチェックします）"
+					"description": "算用数字の表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.ハイフン(-)": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.1.9.アルファベット": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（和文にハイフンを使用していないかチェックします）"
+					"description": "アルファベットの表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.ダッシュ(-)": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.2.2.算用数字と漢数字の使い分け": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（和文にダッシュを使用していないかチェックします）"
+					"description": "算用数字と漢数字の使い分け"
 				},
-				"custom-japanese-proofreading.textlint.丸かっこ（）": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.2.3.一部の助数詞の表記": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（半角の丸かっこを使用していないかチェックします）"
+					"description": "一部の助数詞の表記"
 				},
-				"custom-japanese-proofreading.textlint.大かっこ［］": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.1.1.全角文字と半角文字の間": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（半角の大かっこを使用していないかチェックします）"
+					"description": "全角文字と半角文字の間のスペースの有無"
 				},
-				"custom-japanese-proofreading.textlint.ら抜き言葉": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.1.2.全角文字どうし": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（ら抜き言葉をチェックします）"
+					"description": "全角文字どうしのスペースの有無"
 				},
-				"custom-japanese-proofreading.textlint.二重否定": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.3.かっこ類と隣接する文字の間のスペースの有無": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（二重否定をチェックします）"
+					"description": "かっこ類と隣接する文字の間のスペースの有無"
 				},
-				"custom-japanese-proofreading.textlint.不自然な濁点": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.2.疑問符(？)": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（「エンシ゛ン」のような不自然な濁点をチェックします）"
+					"description": "疑問符(？)の表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.康煕部首": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.6.ハイフン(-)": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（康煕部首に含まれる漢字を使用していないかチェックします）"
+					"description": "ハイフン(-)の表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.逆接の「が」の複数回出現": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.9.ダッシュ(-)": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（逆接の接続助詞「が」が、同一文中に複数回出現していないかチェックします）"
+					"description": "ダッシュ(-)の表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.制御文字": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.3.1.丸かっこ（）": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（制御文字を使用していないかチェックします）"
+					"description": "丸かっこ（）の表記ルール"
 				},
-				"custom-japanese-proofreading.textlint.ゼロ幅スペース": {
+				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.3.2.大かっこ［］": {
+					"scope": "language-overridable",
 					"type": "boolean",
 					"default": true,
-					"description": "有効（ゼロ幅スペースを使用していないかチェックします）"
+					"description": "大かっこ［］の表記ルール"
 				}
 			}
 		}

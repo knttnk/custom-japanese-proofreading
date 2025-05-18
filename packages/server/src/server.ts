@@ -10,6 +10,7 @@ import {
 	DiagnosticSeverity,
 	ProposedFeatures,
 	InitializeParams,
+	DidChangeConfigurationRegistrationOptions,
 	DidChangeConfigurationNotification,
 	TextDocumentSyncKind,
 	InitializeResult,
@@ -27,7 +28,7 @@ import LatexPlugin from "textlint-plugin-latex2e";
 import ReviewPlugin from "textlint-plugin-review";
 
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { APP_NAME, APP_ID, UserSettings } from '@custom-japanese-proofreading/common';
+import { APP_NAME, APP_ID, UserSettings, APP_CONFIG_HEADER } from '@custom-japanese-proofreading/common';
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
@@ -74,7 +75,12 @@ connection.onInitialize((params: InitializeParams) => {
 connection.onInitialized(() => {
 	if (userSettings.hasConfigurationCapability) {
 		// すべての設定変更を登録
-		connection.client.register(DidChangeConfigurationNotification.type, undefined);
+		// 設定が変更された場合、onDidChangeConfigurationが呼び出される。
+		// ただし、設定の内容は送信されないので、サーバ側で取得する必要がある。
+		connection.client.register(
+			DidChangeConfigurationNotification.type,
+			{ section: APP_CONFIG_HEADER } as DidChangeConfigurationRegistrationOptions,
+		);
 	}
 	// TODO: 意味を知ってもしかしたらコメント解除
 	// if (hasWorkspaceFolderCapability) {
@@ -105,22 +111,30 @@ connection.onCodeAction((params: CodeActionParams) => {
 	return quickFixActions;
 });
 
-connection.onDidChangeConfiguration((change) => {
+connection.onDidChangeConfiguration((_) => {
 	if (userSettings.hasConfigurationCapability) {
 		// Reset all cached document settings
 		userSettings.ofDocuments.clear();
 	} else {
-		userSettings.setValues(change.settings[APP_ID] || {});
+		console.warn(
+			`[${APP_ID}] onDidChangeConfiguration: hasConfigurationCapability is false.`
+		);
+		console.warn(
+			"開発者に連絡してください。"
+		);
 	}
 
 	// Revalidate all open text documents
-	// TODO: もっと良い方法があるかも
-	documents.all().forEach(validateTextDocument);
+	documents.all().forEach((textDocument) => {
+		userSettings.cacheDocumentSettings(textDocument.uri).then(() => {
+			validateTextDocument(textDocument);
+		});
+	});
 });
 
-documents.onDidOpen((open) => {
+documents.onDidOpen(async (open) => {
 	// ドキュメントを開いたときに、設定を取得します。
-	userSettings.cacheDocumentSettings(open.document.uri);
+	await userSettings.cacheDocumentSettings(open.document.uri);
 	// ドキュメントの内容が変更された場合、バリデーションを実行します。
 	validateTextDocument(open.document);
 });

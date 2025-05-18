@@ -1,79 +1,75 @@
 
 import { Connection } from 'vscode-languageserver/node';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { APP_ID } from './common';
+import { APP_CONFIG_HEADER, APP_ID } from './index';
 
 /**
  * ユーザ設定のインターフェース
  */
 interface SettingsInterface {
 	/** 問題を表示する最大数 */
-	readonly maxNumberOfProblems: number;
+	"maxNumberOfProblems": number;
 	/**
 	 * 拡張機能側で提供する、
 	 * 使用頻度が高いと思われるルールの設定
 	 */
-	readonly "textlint-preset": {
+	"textlintPreset": {
 		/** 許容できる最大の読点の数 */
-		readonly "preset-japanese/max-ten": boolean;
+		"preset-japanese/max-ten": boolean;
 		/** 逆接の「が」の複数回出現を許容しない */
-		readonly "preset-japanese/no-doubled-conjunctive-particle-ga": boolean;
+		"preset-japanese/no-doubled-conjunctive-particle-ga": boolean;
 		/** 接続詞の連続を許容しない */
-		readonly "preset-japanese/no-doubled-conjunction": boolean;
+		"preset-japanese/no-doubled-conjunction": boolean;
 		/** 二重否定を許容しない */
-		readonly "preset-japanese/no-double-negative-ja": boolean;
+		"preset-japanese/no-double-negative-ja": boolean;
 		/** 助詞の連続を許容しない */
-		readonly "preset-japanese/no-doubled-joshi": boolean;
+		"preset-japanese/no-doubled-joshi": boolean;
 		/** ら抜き言葉を許容しない */
-		readonly "preset-japanese/no-dropping-the-ra": boolean;
+		"preset-japanese/no-dropping-the-ra": boolean;
 		/** ですます調とである調を混ぜない */
-		readonly "preset-japanese/no-mix-dearu-desumasu": boolean;
+		"preset-japanese/no-mix-dearu-desumasu": boolean;
 		/** 不自然な濁点を検出 */
-		readonly "preset-japanese/no-nfd": boolean;
+		"preset-japanese/no-nfd": boolean;
 		/** 制御文字を検出 */
-		readonly "preset-japanese/no-invalid-control-character": boolean;
+		"preset-japanese/no-invalid-control-character": boolean;
 		/** ゼロ幅スペースを検出 */
-		readonly "preset-japanese/no-zero-width-spaces": boolean;
+		"preset-japanese/no-zero-width-spaces": boolean;
 		/** 康煕部首を検出 */
-		readonly "preset-japanese/no-kangxi-radicals": boolean;
+		"preset-japanese/no-kangxi-radicals": boolean;
 		/** 【テキスト校正くん】誤字の検出 */
-		readonly "prh/goji": boolean;
+		"prh/goji": boolean;
 		/** 【テキスト校正くん】重言の検出 */
-		readonly "prh/jugen": boolean;
+		"prh/jugen": boolean;
 		/** 【テキスト校正くん】開く漢字の検出 */
-		readonly "prh/hiraku-kanji": boolean;
+		"prh/hiraku-kanji": boolean;
 		/** 【テキスト校正くん】冗長な表現の検出 */
-		readonly "prh/jocho": boolean;
+		"prh/jocho": boolean;
 		/** 【テキスト校正くん】固有名詞 */
-		readonly "prh/koyu-meishi": boolean;
+		"prh/koyu-meishi": boolean;
 		/** 【テキスト校正くん】技術用語 */
-		readonly "prh/technical-term": boolean;
-		/** 句点 string ならそれに合わせ、nullならチェックしない */
-		readonly "kuten": string | null;
-		/** 読点 string ならそれに合わせ、nullならチェックしない */
-		readonly "tohten": string | null;
+		"prh/technical-term": boolean;
 		// preset-jtf-style
-		readonly "preset-jtf-style/2.1.8.算用数字": boolean;
-		readonly "preset-jtf-style/2.1.9.アルファベット": boolean;
-		readonly "preset-jtf-style/2.2.2.算用数字と漢数字の使い分け": boolean;
-		readonly "preset-jtf-style/2.2.3.一部の助数詞の表記": boolean;
-		readonly "preset-jtf-style/3.1.1.全角文字と半角文字の間": boolean;
-		readonly "preset-jtf-style/3.1.2.全角文字どうし": boolean;
-		readonly "preset-jtf-style/3.3.かっこ類と隣接する文字の間のスペースの有無": boolean;
-		readonly "preset-jtf-style/4.2.2.疑問符(？)": boolean;
-		readonly "preset-jtf-style/4.2.6.ハイフン(-)": boolean;
-		readonly "preset-jtf-style/4.2.9.ダッシュ(-)": boolean;
-		readonly "preset-jtf-style/4.3.1.丸かっこ（）": boolean;
-		readonly "preset-jtf-style/4.3.2.大かっこ［］": boolean;
+		"preset-jtf-style/2.1.8.算用数字": boolean;
+		"preset-jtf-style/2.1.9.アルファベット": boolean;
+		"preset-jtf-style/2.2.2.算用数字と漢数字の使い分け": boolean;
+		"preset-jtf-style/2.2.3.一部の助数詞の表記": boolean;
+		"preset-jtf-style/3.1.1.全角文字と半角文字の間": boolean;
+		"preset-jtf-style/3.1.2.全角文字どうし": boolean;
+		"preset-jtf-style/3.3.かっこ類と隣接する文字の間のスペースの有無": boolean;
+		"preset-jtf-style/4.2.2.疑問符(？)": boolean;
+		"preset-jtf-style/4.2.6.ハイフン(-)": boolean;
+		"preset-jtf-style/4.2.9.ダッシュ(-)": boolean;
+		"preset-jtf-style/4.3.1.丸かっこ（）": boolean;
+		"preset-jtf-style/4.3.2.大かっこ［］": boolean;
 	};
 }
 
 /**
  * 設定のデフォルト値
  */
-const defaultSettings: SettingsInterface = {
-	maxNumberOfProblems: 1000,
-	"textlint-preset": {
+const defaultSettings: Readonly<SettingsInterface> = {
+	"maxNumberOfProblems": 100,
+	"textlintPreset": {
 		// preset-japanese
 		"preset-japanese/max-ten": true,
 		"preset-japanese/no-doubled-conjunctive-particle-ga": true,
@@ -93,9 +89,6 @@ const defaultSettings: SettingsInterface = {
 		"prh/jocho": true,
 		"prh/koyu-meishi": true,
 		"prh/technical-term": true,
-		// 句読点
-		"kuten": "。",
-		"tohten": "、",
 		// preset-jtf-style
 		"preset-jtf-style/2.1.8.算用数字": true,
 		"preset-jtf-style/2.1.9.アルファベット": true,
@@ -126,7 +119,7 @@ export class UserSettings {
 	private connection: Connection;
 	/** 隠されたコンストラクタ */
 	private constructor(connection: Connection) {
-		this.global = defaultSettings;
+		this.globalDefault = defaultSettings;
 		this.connection = connection;
 	}
 
@@ -140,15 +133,18 @@ export class UserSettings {
 	// hasWorkspaceFolderCapability = false;
 	// hasDiagnosticRelatedInformationCapability = false;
 
-	/** すべてのドキュメントに共通する設定 */
-	global: SettingsInterface = defaultSettings;
+	/** 
+	 * すべてのドキュメントに共通する設定
+	 * 書き換えられない。
+	 */
+	readonly globalDefault: SettingsInterface = defaultSettings;
 
 	/**
 	 * ドキュメントごとの設定
 	 * @key ドキュメントのURI
 	 * @value 設定
 	 */
-	readonly ofDocuments = new Map<string, SettingsInterface>();
+	readonly ofDocuments: Map<string, SettingsInterface> = new Map<string, SettingsInterface>();
 
 	/** このクラスのシングルトンインスタンスを取得 */
 	static getInstanceWithConnection(connection: Connection) {
@@ -164,40 +160,49 @@ export class UserSettings {
 
 	// 設定をリセットする
 	clear() {
-		this.global = defaultSettings;
 		this.ofDocuments.clear();
 	}
 
-	// 値を設定する
-	// 渡されなかった値はすでにある値を保持する
-	setValues(values: Partial<SettingsInterface>) {
-		// すでにある値を保持する
-		this.global = {
-			...this.global,
-			...values,
-		};
-	}
-
 	/**
-	 * VSCode側の設定をキャッシュ
+	 * resourceUriに対する設定をキャッシュする
+	 * 
+	 * このuriのドキュメントの校正の前に
+	 * 必ず呼ばれているようにすること。
 	 */
 	async cacheDocumentSettings(
 		resourceUri: string,
 	) {
 		if (!this.hasConfigurationCapability) {
-			return Promise.resolve(this.global);
+			return Promise.resolve(this.globalDefault);
 		}
 		// this.ofDocuments に設定が記録されているか確認
-		let result = this.ofDocuments.get(resourceUri);
+		const result = this.ofDocuments.get(resourceUri);
 		// 設定が記録されていない場合は、VSCode側の設定を取得
 		if (!result) {
-			result = await this.connection.workspace.getConfiguration({
+			const result2 = await this.connection.workspace.getConfiguration({
 				scopeUri: resourceUri,
-				section: APP_ID,
+				section: APP_CONFIG_HEADER,
 			});
-			if (result) { this.ofDocuments.set(resourceUri, result); }
+			const ret: SettingsInterface = this.globalDefault;
+			// 代入
+			ret["maxNumberOfProblems"] = result2["maxNumberOfProblems"] ?? ret["maxNumberOfProblems"];
+			const textlintPreset = "textlintPreset";
+			if (result2[textlintPreset] !== undefined) {
+				const keyArray = Object.keys(ret[textlintPreset]) as (keyof SettingsInterface["textlintPreset"])[];
+				for (const textlintKey of keyArray) {
+					const newValue = result2[textlintPreset][textlintKey];
+					if (newValue !== undefined) {
+						ret[textlintPreset][textlintKey] = newValue as boolean;
+					}
+				}
+			}
+			console.log(
+				`[${APP_ID}]: config of ${resourceUri} => ${JSON.stringify(ret)}`,
+			);
+			this.ofDocuments.set(resourceUri, ret);
 		}
 	}
+	
 	/**
 	 * VSCode側の設定を取得します。
 	 */
@@ -206,7 +211,7 @@ export class UserSettings {
 	): SettingsInterface {
 		// TODO: 見直し
 		if (!this.hasConfigurationCapability) {
-			return this.global;
+			return this.globalDefault;
 		}
 		// this.ofDocuments に設定が記録されているか確認
 		const result = this.ofDocuments.get(resourceUri);
@@ -214,7 +219,7 @@ export class UserSettings {
 		if (!result) {
 			console.warn(
 				`[${APP_ID}] getDocumentSettings: ${resourceUri} is not found.`);
-			return this.global;
+			return this.globalDefault;
 		}
 		return result;
 	}
@@ -236,7 +241,7 @@ export class UserSettings {
 		const settings = this.getDocumentSettings(document.uri);
 		let ret = false;
 
-		for (const [ruleName, isEnabled] of Object.entries(settings["textlint-preset"])) {
+		for (const [ruleName, isEnabled] of Object.entries(settings["textlintPreset"])) {
 			if (targetRuleId === "prh") {
 				// prhのルールの場合
 
