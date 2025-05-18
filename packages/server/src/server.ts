@@ -102,6 +102,10 @@ connection.onCodeAction((params: CodeActionParams) => {
 	return quickFixActions;
 });
 
+// 設定が変更された場合、onDidChangeConfigurationが呼び出される。
+// ドキュメント固有の設定をすべて消してから、
+// ドキュメントの設定を取得し、
+// 設定が読み込まれてから（then）、バリデーションを実行する。
 connection.onDidChangeConfiguration((_) => {
 	if (userSettings.hasConfigurationCapability) {
 		// Reset all cached document settings
