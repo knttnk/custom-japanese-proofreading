@@ -1,5 +1,5 @@
 {
-	"name": "custom-japanese-proofreading",
+	"name": "@custom-japanese-proofreading/server",
 	"displayName": "カスタム日本語校正",
 	"description": "カスタム日本語校正のLSPサーバ",
 	"author": "knttnk",
@@ -13,6 +13,7 @@
 		"node": "*"
 	},
 	"dependencies": {
+		"@custom-japanese-proofreading/common": "^0.1.0",
 		"textlint": "^14.7.1",
 		"textlint-plugin-html": "^1.0.1",
 		"textlint-plugin-latex2e": "^1.2.1",

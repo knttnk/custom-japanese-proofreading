@@ -7,9 +7,13 @@
 			"request": "launch",
 			"name": "Launch Client",
 			"runtimeExecutable": "${execPath}",
-			"args": ["--extensionDevelopmentPath=${workspaceRoot}"],
+			"args": [
+				"--extensionDevelopmentPath=${workspaceRoot}",
+				"--disable-extensions",
+			],
 			"outFiles": [
 				"${workspaceRoot}/packages/client/out/**/*.js",
+				"${workspaceRoot}/packages/common/out/**/*.js",
 				"${workspaceRoot}/packages/server/out/**/*.js"
 			],
 			"autoAttachChildProcesses": true,
