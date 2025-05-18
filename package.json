@@ -229,7 +229,7 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b",
+		"compile": "tsc -b --force",
 		"watch": "tsc -b -w",
 		"lint": "eslint",
 		"test": "sh ./scripts/e2e.sh"
