@@ -63,6 +63,18 @@
 					"default": 100,
 					"description": "校正チェックを行う、1ドキュメント辺りの最大指摘数です。"
 				},
+				"customJapaneseProofreading.textlintrcPaths": {
+					"scope": "language-overridable",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"uniqueItems": true
+					},
+					"default": [
+						"./.vscode/.textlintrc"
+					],
+					"description": "textlintの設定ファイルのパスを指定します。複数指定できます。"
+				},
 				"customJapaneseProofreading.textlintPreset.preset-japanese/max-ten": {
 					"scope": "language-overridable",
 					"type": "boolean",

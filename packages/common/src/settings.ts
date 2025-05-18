@@ -9,6 +9,7 @@ import { APP_CONFIG_HEADER, APP_ID } from './index';
 interface SettingsInterface {
 	/** 問題を表示する最大数 */
 	"maxNumberOfProblems": number;
+	"textlintrcPaths": string[];
 	/**
 	 * 拡張機能側で提供する、
 	 * 使用頻度が高いと思われるルールの設定
@@ -69,6 +70,7 @@ interface SettingsInterface {
  */
 const defaultSettings: Readonly<SettingsInterface> = {
 	"maxNumberOfProblems": 100,
+	"textlintrcPaths": ["./.vscode/.textlintrc"],
 	"textlintPreset": {
 		// preset-japanese
 		"preset-japanese/max-ten": true,
@@ -186,6 +188,7 @@ export class UserSettings {
 			const ret: SettingsInterface = this.globalDefault;
 			// 代入
 			ret["maxNumberOfProblems"] = result2["maxNumberOfProblems"] ?? ret["maxNumberOfProblems"];
+			ret["textlintrcPaths"] = result2["textlintrcPaths"] ?? ret["textlintrcPaths"];
 			const textlintPreset = "textlintPreset";
 			if (result2[textlintPreset] !== undefined) {
 				const keyArray = Object.keys(ret[textlintPreset]) as (keyof SettingsInterface["textlintPreset"])[];
@@ -202,7 +205,7 @@ export class UserSettings {
 			this.ofDocuments.set(resourceUri, ret);
 		}
 	}
-	
+
 	/**
 	 * VSCode側の設定を取得します。
 	 */
