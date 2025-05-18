@@ -1,4 +1,5 @@
 import * as path from "path";
+import * as fs from "fs";
 import { TextlintMessage, TextlintResult } from "@textlint/kernel";
 import { createLinter, loadTextlintrc } from "textlint";
 import { configPath } from "textlint-rule-preset-icsmedia";
@@ -14,19 +15,44 @@ import LatexPlugin from "textlint-plugin-latex2e";
 import ReviewPlugin from "textlint-plugin-review";
 
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
+import { APP_ID, APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
 
 // バリデーション（textlint）を実施
 export async function validateTextDocument(
 	textDocument: TextDocument,
 	userSettings: UserSettings,
 ): Promise<Diagnostic[]> {
-	const document = textDocument.getText();
+	const text: string = textDocument.getText();
 
 	// ICS MEDIAのルールのtextlintの設定ファイルを読み込み
-	console.log(configPath);
+	// console.log(configPath);
+	// const defaultDescriptor = await loadTextlintrc({
+	// 	configFilePath: configPath,
+	// });
+	const settings = userSettings.getDocumentSettings(textDocument.uri);
+	const userConfigPaths = settings.textlintrcPaths;
+	// TODO: 複数のtextlintrcに対応
+	let textlintrcPath: string = path.resolve(userConfigPaths[0]);
+	console.info(
+		`[${APP_ID}]: textlintrcPath: ${textlintrcPath}`,
+	);
+	console.info(
+		`[${APP_ID}]: configPath: ${configPath}`,
+	);
+	if (!fs.existsSync(textlintrcPath)) {
+		textlintrcPath = configPath;
+		console.info(
+			`[${APP_ID}]: textlintrcPath is not found. ${textlintrcPath}`,
+		);
+	}
+	if (!fs.statSync(textlintrcPath).isFile()) {
+		textlintrcPath = configPath;
+		console.info(
+			`[${APP_ID}]: textlintrcPath is not a file. ${textlintrcPath}`,
+		);
+	}
 	const defaultDescriptor = await loadTextlintrc({
-		configFilePath: configPath,
+		configFilePath: textlintrcPath,
 	});
 
 	// デフォルトのプラグイン設定を取得。テキスト・マークダウン用のプラグインなどが入っている想定	
@@ -75,7 +101,7 @@ export async function validateTextDocument(
 		descriptor,
 	});
 	const results: TextlintResult = await linter.lintText(
-		document,
+		text,
 		URI.parse(textDocument.uri).fsPath,
 	);
 

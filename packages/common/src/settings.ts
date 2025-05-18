@@ -118,7 +118,6 @@ const defaultSettings: Readonly<SettingsInterface> = {
 export class UserSettings {
 	/** シングルトンインスタンス */
 	private static instance: UserSettings;
-	private connection: Connection;
 	/** 隠されたコンストラクタ */
 	private constructor(connection: Connection) {
 		this.globalDefault = defaultSettings;
@@ -139,6 +138,7 @@ export class UserSettings {
 	 * 書き換えられない。
 	 */
 	readonly globalDefault: SettingsInterface = defaultSettings;
+	readonly connection: Connection;
 
 	/**
 	 * ドキュメントごとの設定

@@ -73,7 +73,7 @@
 					"default": [
 						"./.vscode/.textlintrc"
 					],
-					"description": "textlintの設定ファイルのパスを指定します。複数指定できます。"
+					"description": "textlintの設定ファイルのパスを指定します。複数指定できます。`./`はワークスペースのルートを指します。"
 				},
 				"customJapaneseProofreading.textlintPreset.preset-japanese/max-ten": {
 					"scope": "language-overridable",

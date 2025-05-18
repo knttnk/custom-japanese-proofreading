@@ -163,6 +163,8 @@ documents.onDidClose((close) => {
 
 // ドキュメントを初めて開いた時と内容に変更があった際に実行します。
 documents.onDidChangeContent(async (change) => {
+	// 設定取得を待つ
+	await userSettings.cacheDocumentSettings(change.document.uri);
 	const diagnostics = await validateTextDocument(
 		change.document,
 		userSettings,
