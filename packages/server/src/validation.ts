@@ -21,10 +21,6 @@ export async function validateTextDocument(
 	textDocument: TextDocument,
 	userSettings: UserSettings,
 ): Promise<Diagnostic[]> {
-	// TODO: Promise<Diagnostic[]> として診断結果を返す書き方もできるみたい
-	// VSCode側の設定を取得
-	// const settings = userSettings.getDocumentSettings(connection, textDocument.uri);
-
 	const document = textDocument.getText();
 
 	// ICS MEDIAのルールのtextlintの設定ファイルを読み込み

@@ -131,7 +131,6 @@ export class UserSettings {
 	 * サポートしていない場合は、グローバル設定を使用
 	 **/
 	hasConfigurationCapability = false;
-	// TODO: 理解してもしかしたらコメント解除
 	// hasWorkspaceFolderCapability = false;
 	// hasDiagnosticRelatedInformationCapability = false;
 
@@ -212,7 +211,6 @@ export class UserSettings {
 	getDocumentSettings(
 		resourceUri: string,
 	): SettingsInterface {
-		// TODO: 見直し
 		if (!this.hasConfigurationCapability) {
 			return this.globalDefault;
 		}

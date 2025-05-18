@@ -52,7 +52,6 @@ connection.onInitialize((params: InitializeParams) => {
 			codeActionProvider: true, // connection.onCodeAction を有効にする
 		}
 	};
-	// TODO: 意味を知ってもしかしたらコメント解除
 	// if (hasWorkspaceFolderCapability) {  
 	// 	result.capabilities.workspace = {
 	// 		workspaceFolders: {
@@ -73,7 +72,6 @@ connection.onInitialized(() => {
 			{ section: APP_CONFIG_HEADER } as DidChangeConfigurationRegistrationOptions,
 		);
 	}
-	// TODO: 意味を知ってもしかしたらコメント解除
 	// if (hasWorkspaceFolderCapability) {
 	// 	connection.workspace.onDidChangeWorkspaceFolders(_event => {
 	// 		connection.console.log('Workspace folder change event received.');
@@ -146,7 +144,6 @@ documents.onDidClose((close) => {
 	resetTextDocument(close.document);
 });
 
-// TODO: 理解してもしかしたらコメント解除
 // connection.languages.diagnostics.on(async (params) => {
 // 	const document = documents.get(params.textDocument.uri);
 // 	if (document !== undefined) {
