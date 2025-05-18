@@ -1,5 +1,5 @@
 {
-	"name": "custom-japanese-proofreading",
+	"name": "@custom-japanese-proofreading/server",
 	"displayName": "カスタム日本語校正",
 	"description": "カスタム日本語校正のLSPサーバ",
 	"author": "knttnk",
