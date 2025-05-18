@@ -29,8 +29,7 @@ import { DEFAULT_EXTENSION_RULES } from "./rules/rule";
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
-import { APP_NAME } from '@custom-japanese-proofreading/common';
-// const APP_NAME = "カスタム日本語校正";
+import { APP_NAME, APP_ID } from '@custom-japanese-proofreading/common';
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
@@ -152,7 +151,7 @@ connection.onDidChangeConfiguration((change) => {
 		// Reset all cached document settings
 		documentSettings.clear();
 	} else {
-		globalSettings = (change.settings["custom-japanese-proofreading"] ||
+		globalSettings = (change.settings[APP_ID] ||
 			defaultSettings) as ITextlintSettings;
 	}
 
@@ -172,7 +171,7 @@ function getDocumentSettings(resource: string): Thenable<ITextlintSettings> {
 	if (!result) {
 		result = connection.workspace.getConfiguration({
 			scopeUri: resource,
-			section: "custom-japanese-proofreading",
+			section: APP_ID,
 		});
 		documentSettings.set(resource, result);
 	}
