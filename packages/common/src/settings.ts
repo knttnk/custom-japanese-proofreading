@@ -138,7 +138,7 @@ export class UserSettings {
 	 * 書き換えられない。
 	 */
 	readonly globalDefault: SettingsInterface = defaultSettings;
-	readonly connection: Connection;
+	connection: Connection;
 
 	/**
 	 * ドキュメントごとの設定
