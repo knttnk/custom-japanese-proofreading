@@ -9,7 +9,7 @@
 			"runtimeExecutable": "${execPath}",
 			"args": [
 				"--extensionDevelopmentPath=${workspaceRoot}",
-				"--disable-extensions",
+				"--profile-temp",
 			],
 			"outFiles": [
 				"${workspaceRoot}/packages/client/out/**/*.js",
@@ -20,7 +20,10 @@
 			"preLaunchTask": {
 				"type": "npm",
 				"script": "compile"
-			}
+			},
+			"skipFiles": [
+				"**/app/out/vs/**"
+			]
 		},
 		// {
 		// 	"name": "Language Server E2E Test",
