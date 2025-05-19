@@ -14,6 +14,8 @@
 	},
 	"dependencies": {
 		"@custom-japanese-proofreading/common": "^0.1.0",
+		"@types/debug": "^4.1.12",
+		"debug": "^4.4.1",
 		"textlint": "^14.7.1",
 		"textlint-plugin-html": "^1.0.1",
 		"textlint-plugin-latex2e": "^1.2.1",

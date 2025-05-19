@@ -15,6 +15,12 @@ import LatexPlugin from "textlint-plugin-latex2e";
 import ReviewPlugin from "textlint-plugin-review";
 
 import { TextDocument } from 'vscode-languageserver-textdocument';
+// その他
+import debugModule from "debug";
+debugModule.enable("textlint:loader:TextlintrcLoader");  // デフォルトでtextlintrcの読み込みエラーが表示されないので、強制的に表示するために追加
+// TODO: 色がわかりにくいので、このモジュール以外の部分を色を変える。
+
+// 自分
 import { APP_ID, APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
 
 // バリデーション（textlint）を実施
