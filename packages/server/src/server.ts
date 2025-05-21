@@ -29,7 +29,7 @@ const connection: Connection = createConnection(ProposedFeatures.all);
 const documents = new TextDocuments<TextDocument>(TextDocument);
 
 // VSCode側の設定
-const userSettings = UserSettings.getInstanceWithConnection(connection);
+const userSettings = UserSettings.getInstance(connection);
 
 connection.onInitialize((params: InitializeParams) => {
 	const capabilities = params.capabilities;

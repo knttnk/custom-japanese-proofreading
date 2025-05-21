@@ -68,186 +68,14 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"uniqueItems": true
+						"uniqueItems": true,
+						"pattern": "(.*.json|.*.jsonc|:default:)"
 					},
 					"default": [
-						"./.vscode/.textlintrc"
+						":default:",
+						"./.textlintrc.json"
 					],
-					"description": "textlintの設定ファイルのパスを指定します。複数指定できます。`./`はワークスペースのルートを指します。"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/max-ten": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "許容できる最大の読点の数"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-conjunctive-particle-ga": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "逆接の「が」の複数回出現を許容しない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-conjunction": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "接続詞の連続を許容しない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-double-negative-ja": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "二重否定を許容しない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-doubled-joshi": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "助詞の連続を許容しない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-dropping-the-ra": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "ら抜き言葉を許容しない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-mix-dearu-desumasu": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "ですます調とである調を混ぜない"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-nfd": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "不自然な濁点を検出"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-invalid-control-character": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "制御文字を検出"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-zero-width-spaces": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "ゼロ幅スペースを検出"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-japanese/no-kangxi-radicals": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "康煕部首を検出"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/goji": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】誤字の検出"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/jugen": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】重言の検出"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/hiraku-kanji": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】開く漢字の検出"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/jocho": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】冗長な表現の検出"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/koyu-meishi": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】固有名詞"
-				},
-				"customJapaneseProofreading.textlintPreset.prh/technical-term": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "【テキスト校正くん】技術用語"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.1.8.算用数字": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "算用数字の表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.1.9.アルファベット": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "アルファベットの表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.2.2.算用数字と漢数字の使い分け": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "算用数字と漢数字の使い分け"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/2.2.3.一部の助数詞の表記": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "一部の助数詞の表記"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.1.1.全角文字と半角文字の間": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "全角文字と半角文字の間のスペースの有無"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.1.2.全角文字どうし": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "全角文字どうしのスペースの有無"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/3.3.かっこ類と隣接する文字の間のスペースの有無": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "かっこ類と隣接する文字の間のスペースの有無"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.2.疑問符(？)": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "疑問符(？)の表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.6.ハイフン(-)": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "ハイフン(-)の表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.2.9.ダッシュ(-)": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "ダッシュ(-)の表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.3.1.丸かっこ（）": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "丸かっこ（）の表記ルール"
-				},
-				"customJapaneseProofreading.textlintPreset.preset-jtf-style/4.3.2.大かっこ［］": {
-					"scope": "language-overridable",
-					"type": "boolean",
-					"default": true,
-					"description": "大かっこ［］の表記ルール"
+					"markdownDescription": "textlintの設定ファイルのパスを指定するか、`:default:`と入力してデフォルトの設定を使用します。\n\n複数指定できます。pathは絶対参照するか、`./`を使ってワークスペースから相対参照してください。各ファイルはjsonにしてください。"
 				}
 			}
 		}
@@ -264,17 +92,17 @@
 		"@stylistic/eslint-plugin": "^2.9.0",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^20",
-		"eslint": "^9.13.0",
-		"mocha": "^10.3.0",
-		"typescript": "^5.8.2",
-		"typescript-eslint": "^8.26.0",
 		"@types/vscode": "^1.75.0",
 		"@typescript-eslint/eslint-plugin": "^8.32.1",
 		"@typescript-eslint/parser": "^8.32.1",
+		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-prettier": "^5.4.0",
-		"prettier": "^3.5.3"
+		"mocha": "^10.3.0",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.26.0"
 	},
 	"workspaces": [
 		"packages/*"

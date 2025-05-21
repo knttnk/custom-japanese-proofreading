@@ -147,8 +147,9 @@ export class UserSettings {
 	 */
 	readonly ofDocuments: Map<string, SettingsInterface> = new Map<string, SettingsInterface>();
 
+
 	/** このクラスのシングルトンインスタンスを取得 */
-	static getInstanceWithConnection(connection: Connection) {
+	static getInstance(connection: Connection) {
 		if (!UserSettings.instance) {
 			// インスタンスが存在しない場合は、新しいインスタンスを作成
 			UserSettings.instance = new UserSettings(connection);
@@ -198,7 +199,7 @@ export class UserSettings {
 					}
 				}
 			}
-			console.log(
+			console.debug(
 				`[${APP_ID}]: config of ${resourceUri} => ${JSON.stringify(ret)}`,
 			);
 			this.ofDocuments.set(resourceUri, ret);
