@@ -137,11 +137,6 @@ export async function validateTextDocument(
 				const message: TextlintMessage = messages[i];
 				const text = `${message.message}（${message.ruleId}）`;
 
-				// 有効とされているエラーか？
-				if (!userSettings.isTarget(textDocument, message.ruleId, message.message)) {
-					continue;
-				}
-
 				// エラー範囲の開始位置のズレ
 				let startCharacterDiff = 0;
 

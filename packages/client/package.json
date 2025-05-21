@@ -5,18 +5,18 @@
 	"author": "knttnk",
 	"publisher": "knttnk",
 	"license": "MIT",
+	"main": "./out/extension.js",
+	"types": "./out/extension.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/knttnk/custom-japanese-proofreading.git"
 	},
 	"engines": {
+		"node": "*",
 		"vscode": "^1.75.0"
 	},
 	"dependencies": {
-		"glob": "^11.0.0",
 		"vscode-languageclient": "^9.0.1"
 	},
-	"devDependencies": {
-		"@types/vscode": "^1.75.1"
-	}
+	"scripts": {}
 }

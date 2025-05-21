@@ -1,6 +1,8 @@
 import * as path from 'path';
 import { workspace, ExtensionContext } from 'vscode';
 
+// TODO: アイコンを作る
+
 import {
 	LanguageClient,
 	LanguageClientOptions,

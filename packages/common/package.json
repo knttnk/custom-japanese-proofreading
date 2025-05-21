@@ -4,6 +4,10 @@
   "description": "共通ライブラリ",
   "main": "./out/index.js",
   "types": "./out/index.d.ts",
+	"engines": {
+		"node": "*",
+		"vscode": "^1.75.0"
+	},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -5,7 +5,6 @@
 	"author": "knttnk",
 	"publisher": "knttnk",
 	"license": "MIT",
-	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#424242",
 		"theme": "dark"
@@ -81,25 +80,29 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b --force",
-		"watch": "tsc -b -w",
-		"lint": "eslint",
-		"test": "sh ./scripts/e2e.sh"
+		"compile": "npm run check-types && node esbuild.js",
+		"check-types": "tsc --noEmit",
+		"watch": "npm-run-all -p watch:*",
+		"watch:esbuild": "node esbuild.js --watch",
+		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+		"vscode:prepublish": "npm run package",
+		"package": "npm run check-types && node esbuild.js --production"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.13.0",
-		"@stylistic/eslint-plugin": "^2.9.0",
+		"@stylistic/eslint-plugin": "^4.2.0",
 		"@types/mocha": "^10.0.6",
-		"@types/node": "^20",
+		"@types/node": "^22.15.21",
 		"@types/vscode": "^1.75.0",
 		"@typescript-eslint/eslint-plugin": "^8.32.1",
 		"@typescript-eslint/parser": "^8.32.1",
+		"@vscode/vsce": "^3.4.1",
+		"esbuild": "^0.25.4",
 		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-prettier": "^5.4.0",
-		"mocha": "^10.3.0",
+		"mocha": "^11.4.0",
 		"prettier": "^3.5.3",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.26.0"
