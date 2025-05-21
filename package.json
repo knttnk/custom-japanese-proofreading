@@ -80,13 +80,12 @@
 		}
 	},
 	"scripts": {
-		"compile": "npm run check-types && node esbuild.js",
-		"check-types": "tsc --noEmit",
-		"watch": "npm-run-all -p watch:*",
-		"watch:esbuild": "node esbuild.js --watch",
-		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-		"vscode:prepublish": "npm run package",
-		"package": "npm run check-types && node esbuild.js --production"
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b --force",
+		"watch": "tsc -b -w",
+		"lint": "eslint",
+		"test": "sh ./scripts/e2e.sh",
+		"package": "vsce package --follow-symlinks"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.13.0",
@@ -97,7 +96,6 @@
 		"@typescript-eslint/eslint-plugin": "^8.32.1",
 		"@typescript-eslint/parser": "^8.32.1",
 		"@vscode/vsce": "^3.4.1",
-		"esbuild": "^0.25.4",
 		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-import": "^2.31.0",

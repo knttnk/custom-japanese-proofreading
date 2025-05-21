@@ -1,15 +1,29 @@
+.git/**
 .vscode/**
 **/*.ts
 **/*.map
-.gitignore
-**/tsconfig.json
-**/tsconfig.base.json
-contributing.md
+# .gitignore  # このファイルは勝手に除外される。逆に、書いてしまうと中身もついでに除外されてしまう。
+# devDependencies はデフォルトで除外されるので、明示的に除外する必要はない
+**/tsconfig.**
+**/*.md
+**/*editorconfig*
+**/LICENSE*
+**/License*
+**/license*
+**/README*
+**/CHANGELOG*
+**/CONTRIBUTING*
+**/FUNDING*
+!LICENSE
+!README.md
+!CHANGELOG.md
 .travis.yml
-client/node_modules/**
-!client/node_modules/vscode-jsonrpc/**
-!client/node_modules/vscode-languageclient/**
-!client/node_modules/vscode-languageserver-protocol/**
-!client/node_modules/vscode-languageserver-types/**
-!client/node_modules/{minimatch,brace-expansion,concat-map,balanced-match}/**
-!client/node_modules/{semver,lru-cache,yallist}/**
+**/.*rc
+!**/*textlintrc*
+./.*
+# !client/node_modules/vscode-jsonrpc/**
+# !client/node_modules/vscode-languageclient/**
+# !client/node_modules/vscode-languageserver-protocol/**
+# !client/node_modules/vscode-languageserver-types/**
+# !client/node_modules/{minimatch,brace-expansion,concat-map,balanced-match}/**
+# !client/node_modules/{semver,lru-cache,yallist}/**
