@@ -42,8 +42,8 @@ export function activate(context: ExtensionContext) {
 		}
 	};
 	client = new LanguageClient(
-		"languageServerTextlint",
-		"Language Server Textlint",
+		"customJapaneseProofreading",
+		"カスタム日本語校正LSP",
 		serverOptions,
 		clientOptions
 	);
