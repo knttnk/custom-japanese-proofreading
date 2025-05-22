@@ -168,7 +168,7 @@ export async function validateTextDocument(
 					range: Range.create(startPos, endPos),
 					message: canAutofixMessage + message.message,
 					source: `${APP_NAME} (設定ファイル${textlintrcIndex + 1})`,
-					code: message.ruleId,
+					code: `rule: ${message.ruleId}`,
 					data: message.fix?.text,
 				};
 				diagnostics.push(diagnostic);
