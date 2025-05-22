@@ -135,7 +135,6 @@ export async function validateTextDocument(
 			const l: number = messages.length;
 			for (let i = 0; i < l; i++) {
 				const message: TextlintMessage = messages[i];
-				const text = `${message.message}（${message.ruleId}）`;
 
 				// エラー範囲の開始位置のズレ
 				let startCharacterDiff = 0;
@@ -167,8 +166,8 @@ export async function validateTextDocument(
 				const diagnostic: Diagnostic = {
 					severity: toDiagnosticSeverity(message.severity),
 					range: Range.create(startPos, endPos),
-					message: "textlintrc: " + textlintrcIndex + canAutofixMessage + text,
-					source: APP_NAME,
+					message: canAutofixMessage + message.message,
+					source: `${APP_NAME} (設定ファイル${textlintrcIndex + 1})`,
 					code: message.ruleId,
 					data: message.fix?.text,
 				};
