@@ -138,10 +138,7 @@ documents.onDidOpen(async (open) => {
 	// ドキュメントを開いたときに、設定を取得します。
 	await userSettings.cacheDocumentSettings(open.document.uri);
 	// ドキュメントの内容が変更された場合、バリデーションを実行します。
-	validateTextDocument(
-		open.document,
-		userSettings,
-	);
+	onRequestCheck(open.document);
 });
 
 // Only keep settings for open documents
