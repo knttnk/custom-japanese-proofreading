@@ -6,8 +6,8 @@
 			"script": "compile",
 			"group": "build",
 			"presentation": {
-				"panel": "new",
-				"reveal": "always"
+				"panel": "dedicated",
+				"reveal": "silent",
 			},
 			"problemMatcher": [
 				"$tsc"

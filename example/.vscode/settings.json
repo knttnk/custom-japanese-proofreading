@@ -1,0 +1,6 @@
+{
+    "customJapaneseProofreading.textlintrcPaths": [
+        "./.textlintrc.json",
+        // ":default:"
+    ],
+}

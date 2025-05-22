@@ -16,26 +16,28 @@ npm i
 
 VS Codeで[F5]キーを押下しデバッグ実行を行うと、開発中の拡張機能がインストールされた状態でVS Codeが立ち上がります。
 
+#### ルールの追加
+
 ルールを追加したいときは、`@custom-japanese-proofreading/server`ワークスペースにインストールします。例えば、
 
 ```shell
-npm install --workspace @custom-japanese-proofreading/server @textlint-ja/textlint-rule-no-synonyms
+npm install @textlint-ja/textlint-rule-no-synonyms --workspace @custom-japanese-proofreading/server 
 ```
+
+開発が終わったら、example/example.mdに例文を追加してください。
+このとき、ルール名をアルファベット順に並べてください。
+
+`preset-*`系のルールに含まれるものは、追加しない方針です。
+`preset-*`系のルールが独自のルールを含んでいるとき、結局どちらも必要になるためです。
 
 ### 4. 拡張機能の公開
-
-公開ツールをインストール。
-
-```shell
-npm i --save-dev @vscode/vsce
-```
 
 拡張機能のパッケージング。
 
 拡張機能を公開せずにパッケージ化できます。公開前に内部確認する際に利用します。
 
 ```shell
-vsce package
+npm run package
 ```
 
 拡張機能の公開。

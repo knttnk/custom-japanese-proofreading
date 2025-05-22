@@ -19,5 +19,10 @@
 		"**/node_modules": true,
 		"**/out": true,
 		"**/package-lock.json": true,
-	}
+	},
+	"ltex.enabled": false,
+	"spellright.language": [],
+	"spellright.documentTypes": [
+		"plaintext"
+	]
 }

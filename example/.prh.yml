@@ -1,0 +1,19 @@
+version: 1
+rules:
+  - expected: $1\verb|変な文字?|$3
+    patterns:
+      # 孤立した一文字
+      # ただし，「B区分」と「C++」だけは許す
+      - /(\b)[a-zA-Z](?:(区分|\+\+)|(\b))/
+      - ts
+      - st
+    regexpMustEmpty: $2
+
+  # 大文字小文字全角半角の統一
+  - expected: Cookie
+  # 以下と等価 正規表現には強制でgフラグが付く
+  # - expected: Cookie
+  #   pattern: "/[CcＣｃ][OoＯｏ][OoＯｏ][KkＫｋ][IiＩｉ][EeＥｅ]/g"
+  #   options:
+  #     wordBoundary: false
+  #   specs: []
