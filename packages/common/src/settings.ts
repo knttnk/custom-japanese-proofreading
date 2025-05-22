@@ -2,12 +2,20 @@
 import { Connection } from 'vscode-languageserver/node';
 import { APP_CONFIG_HEADER, APP_ID } from './index';
 
+export enum CheckOn {
+	/** 保存時 */
+	"save" = "save",
+	/** 編集時 */
+	"change" = "change",
+}
+
 /**
  * ユーザ設定のインターフェース
  */
 interface SettingsInterface {
 	/** 問題を表示する最大数 */
 	"maxNumberOfProblems": number;
+	"checkOn": CheckOn;
 	"textlintrcPaths": string[];
 	/**
 	 * 拡張機能側で提供する、
@@ -69,6 +77,7 @@ interface SettingsInterface {
  */
 const defaultSettings: Readonly<SettingsInterface> = {
 	"maxNumberOfProblems": 100,
+	"checkOn": CheckOn.save,
 	"textlintrcPaths": ["./.vscode/.textlintrc"],
 	// "textlintPreset": {
 	// 	// preset-japanese
@@ -187,6 +196,7 @@ export class UserSettings {
 			const ret: SettingsInterface = this.globalDefault;
 			// 代入
 			ret["maxNumberOfProblems"] = result2["maxNumberOfProblems"] ?? ret["maxNumberOfProblems"];
+			ret["checkOn"] = result2["checkOn"] ?? ret["checkOn"];
 			ret["textlintrcPaths"] = result2["textlintrcPaths"] ?? ret["textlintrcPaths"];
 			// const textlintPreset = "textlintPreset";
 			// if (result2[textlintPreset] !== undefined) {

@@ -8,6 +8,7 @@ import {
 	DidChangeConfigurationRegistrationOptions,
 	DidChangeConfigurationNotification,
 	TextDocumentSyncKind,
+	TextDocumentSyncOptions,
 	InitializeResult,
 	TextDocumentEdit,
 	TextEdit,
@@ -19,7 +20,7 @@ import {
 import { validateTextDocument } from './validation';
 
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { APP_NAME, APP_ID, UserSettings, APP_CONFIG_HEADER } from '@custom-japanese-proofreading/common';
+import { APP_NAME, APP_ID, UserSettings, APP_CONFIG_HEADER, CheckOn } from '@custom-japanese-proofreading/common';
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
@@ -45,10 +46,15 @@ connection.onInitialize((params: InitializeParams) => {
 	// 	capabilities.textDocument.publishDiagnostics &&
 	// 	capabilities.textDocument.publishDiagnostics.relatedInformation
 	// );
+	const textDocumentSync: TextDocumentSyncOptions = {
+		openClose: true,
+		change: TextDocumentSyncKind.Incremental,
+		save: { includeText: true } // 保存時にテキストを含んだ通知を送る
+	};
 
 	const result: InitializeResult = {
 		capabilities: {
-			textDocumentSync: TextDocumentSyncKind.Incremental,
+			textDocumentSync: textDocumentSync,
 			codeActionProvider: true, // connection.onCodeAction を有効にする
 		}
 	};
@@ -161,16 +167,31 @@ documents.onDidClose((close) => {
 // 	}
 // });
 
+/**
+ * ユーザの行動と設定から、チェックのリクエストがあったと考えられるときに実行する。
+ * 直前に必ず userSettings.cacheDocumentSettings() を実行すること。
+ * 
+ * @param document
+ * @returns
+ */
+async function onRequestCheck(document: TextDocument) {
+	const diagnostics = await validateTextDocument(
+		document,
+		userSettings,
+	);
+	// 診断結果をVSCodeに送信。UIに表示される。
+	connection.sendDiagnostics({ uri: document.uri, diagnostics });
+}
+
 // ドキュメントを初めて開いた時と内容に変更があった際に実行します。
 documents.onDidChangeContent(async (change) => {
 	// 設定取得を待つ
 	await userSettings.cacheDocumentSettings(change.document.uri);
-	const diagnostics = await validateTextDocument(
-		change.document,
-		userSettings,
-	);
-	// 診断結果をVSCodeに送信。UIに表示される。
-	connection.sendDiagnostics({ uri: change.document.uri, diagnostics });
+	const settings = userSettings.getDocumentSettings(change.document.uri);
+
+	if (settings.checkOn == CheckOn.change) {
+		onRequestCheck(change.document);
+	}
 });
 
 
@@ -179,6 +200,16 @@ connection.onDidChangeWatchedFiles(_change => {
 	connection.console.log('ファイルの変更通知を受信');
 });
 
+documents.onDidSave(async (save) => {
+	// 設定取得を待つ
+	await userSettings.cacheDocumentSettings(save.document.uri);
+	const settings = userSettings.getDocumentSettings(save.document.uri);
+	if (settings.checkOn == CheckOn.save) {
+		const document = documents.get(save.document.uri);
+		if (document === undefined) { return; }
+		onRequestCheck(document);
+	}
+});
 
 /**
  * validate済みの内容を破棄します。

@@ -62,6 +62,19 @@
 					"default": 100,
 					"description": "校正チェックを行う、1ドキュメント辺りの最大指摘数です。"
 				},
+				"customJapaneseProofreading.checkOn": {
+					"scope": "language-overridable",
+					"enum": [
+						"save",
+						"change"
+					],
+					"enumDescriptions": [
+						"保存のたびにチェック",
+						"変更のたびにチェック"
+					],
+					"default": "save",
+					"description": "校正チェックを行うタイミングを指定します。"
+				},
 				"customJapaneseProofreading.textlintrcPaths": {
 					"scope": "language-overridable",
 					"type": "array",

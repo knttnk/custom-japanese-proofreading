@@ -3,4 +3,5 @@
         "./.textlintrc.json",
         // ":default:"
     ],
+    "customJapaneseProofreading.checkOn": "save"
 }
