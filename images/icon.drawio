@@ -1,0 +1,19 @@
+<mxfile host="Electron" modified="2025-05-22T05:12:40.396Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.18 Chrome/120.0.6099.199 Electron/28.1.2 Safari/537.36" etag="rkSXvmyEHvbn8NdW0iF0" version="22.1.18" type="device">
+  <diagram name="ページ1" id="QTSIeoDMyCWCpE0HLgo5">
+    <mxGraphModel dx="656" dy="388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="200" pageHeight="200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qxaxvsAeL7yD1GbmvFMo-1" value="日本語の" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=LINE Seed JP_TTF;fontSize=60;fontStyle=1;fontColor=#999999;spacingBottom=12;spacing=0;" parent="1" vertex="1">
+          <mxGeometry y="130" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="qxaxvsAeL7yD1GbmvFMo-3" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiM2MWEyNzkiIHdpZHRoPSIyNHB4IiB2aWV3Qm94PSIwIC05NjAgOTYwIDk2MCIgaGVpZ2h0PSIyNHB4Ij48cGF0aCBkPSJtNDI0LTI5NiAyODItMjgyLTU2LTU2LTIyNiAyMjYtMTE0LTExNC01NiA1NiAxNzAgMTcwWm01NiAyMTZxLTgzIDAtMTU2LTMxLjVUMTk3LTE5N3EtNTQtNTQtODUuNS0xMjdUODAtNDgwcTAtODMgMzEuNS0xNTZUMTk3LTc2M3E1NC01NCAxMjctODUuNVQ0ODAtODgwcTgzIDAgMTU2IDMxLjVUNzYzLTc2M3E1NCA1NCA4NS41IDEyN1Q4ODAtNDgwcTAgODMtMzEuNSAxNTZUNzYzLTE5N3EtNTQgNTQtMTI3IDg1LjVUNDgwLTgwWm0wLTgwcTEzNCAwIDIyNy05M3Q5My0yMjdxMC0xMzQtOTMtMjI3dC0yMjctOTNxLTEzNCAwLTIyNyA5M3QtOTMgMjI3cTAgMTM0IDkzIDIyN3QyMjcgOTNabTAtMzIwWiIvPjwvc3ZnPg==;" parent="1" vertex="1">
+          <mxGeometry x="120" y="50" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tE6OSLeZynp_IWdtqhLI-1" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIiBpZD0iX+iJsuS/ruatoyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNlNTAwMTI7fS5jbHMtMSwuY2xzLTJ7c3Ryb2tlLXdpZHRoOjBweDt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48L2RlZnM+PHJlY3QgaGVpZ2h0PSI2MDAiIHdpZHRoPSI5MDAiIHk9IjAiIGNsYXNzPSJjbHMtMiIvPjxjaXJjbGUgcj0iMTgwIiBjeT0iMzAwIiBjeD0iNDUwIiBjbGFzcz0iY2xzLTEiLz48L3N2Zz4=;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="110" height="73.33" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
