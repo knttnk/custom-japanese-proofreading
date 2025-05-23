@@ -1,0 +1,530 @@
+[
+  {
+    "message": "「充てる」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "あてる",
+    "tokens": [
+      {
+        "basic_form": "充てる",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「有る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ある",
+    "tokens": [{ "basic_form": "有る" }]
+  },
+  {
+    "message": "「併せて」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "あわせて",
+    "tokens": [
+      {
+        "surface_form": "併せて",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「と言（云）う」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "という",
+    "tokens": [{ "basic_form": "言う" }]
+  },
+  {
+    "message": "「と言（云）う」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "という",
+    "tokens": [{ "basic_form": "云う" }]
+  },
+  {
+    "message": "「如何に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いかに",
+    "tokens": [
+      {
+        "surface_form": "如何に",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「徒に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いたずらに",
+    "tokens": [
+      {
+        "surface_form": "徒に",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「未だ」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いまだ（まだ）",
+    "tokens": [
+      {
+        "surface_form": "未だ",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「愈々」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いよいよ",
+    "tokens": [
+      {
+        "surface_form": "愈々",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "助動詞「居る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いる",
+    "tokens": [
+      {
+        "surface_form": "て",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "居る",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "助動詞「居る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いる",
+    "tokens": [
+      {
+        "surface_form": "で",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "居る",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「の中」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "のうち",
+    "tokens": [
+      {
+        "surface_form": "の",
+        "pos": "助詞"
+      },
+      {
+        "surface_form": "中",
+        "pos": "名詞",
+        "pos_detail_1": "非自立",
+        "pos_detail_2": "副詞可能"
+      }
+    ]
+  },
+  {
+    "message": "「し得る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "(し)うる",
+    "tokens": [
+      { "conjugated_form": "連用形" },
+      {
+        "basic_form": "得る",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「概ね」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "おおむね",
+    "tokens": [
+      {
+        "surface_form": "概ね",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "助動詞「置く」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ておく",
+    "tokens": [
+      {
+        "surface_form": "て",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "置く",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "助動詞「置く」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "でおく",
+    "tokens": [
+      {
+        "surface_form": "で",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "置く",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「徐に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "おもむろに",
+    "tokens": [
+      {
+        "surface_form": "徐に",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「した折り」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "(した)おり",
+    "tokens": [
+      { "pos": "動詞" },
+      {
+        "surface_form": "折り",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「した折り」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "(た)おり",
+    "tokens": [
+      {
+        "conjugated_form": "基本形"
+      },
+      {
+        "surface_form": "折り",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「兼々」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "かねがね",
+    "tokens": [
+      {
+        "surface_form": "兼々",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「来す」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "きたす",
+    "tokens": [
+      {
+        "basic_form": "来す",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "連体詞「来る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "きたる・・",
+    "tokens": [
+      {
+        "basic_form": "来る",
+        "pos": "連体詞"
+      }
+    ]
+  },
+  {
+    "message": "連体詞「来る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "きたる・・",
+    "tokens": [
+      {
+        "basic_form": "来る",
+        "pos": "動詞"
+      },
+      {
+        "surface_form": "たる",
+        "conjugated_form": "体言接続"
+      }
+    ]
+  },
+  {
+    "message": "「極めて」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "きわめて",
+    "tokens": [
+      {
+        "surface_form": "極めて",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "名詞「事」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "こと",
+    "tokens": [{ "surface_form": "事" }]
+  },
+  {
+    "message": "「殊に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ことに",
+    "tokens": [{ "surface_form": "殊に" }]
+  },
+  {
+    "message": "「毎に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ごと（たび）に",
+    "tokens": [{ "surface_form": "毎" }]
+  },
+  {
+    "message": "「頃」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ころ",
+    "tokens": [
+      {
+        "surface_form": "頃",
+        "pos": "名詞"
+      }
+    ]
+  },
+  {
+    "message": "「しかし」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "しかし",
+    "tokens": [
+      {
+        "surface_form": "併し",
+        "pos": "接続詞"
+      }
+    ]
+  },
+  {
+    "message": "「直に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "じきに",
+    "tokens": [
+      {
+        "surface_form": "直に",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「宛（ずつ）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ずつ",
+    "tokens": [
+      {
+        "pos": "副詞"
+      },
+      {
+        "surface_form": "宛"
+      }
+    ]
+  },
+  {
+    "message": "「素早い」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "すばやい",
+    "tokens": [
+      {
+        "basic_form": "素早い",
+        "pos": "形容詞"
+      }
+    ]
+  },
+  {
+    "message": "「為る（する）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "する",
+    "tokens": [
+      {
+        "basic_form": "為る",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「し過ぎる」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "（し）すぎる",
+    "tokens": [
+      { "pos": "動詞" },
+      {
+        "basic_form": "過ぎる",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "「大分（だいぶん）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。誤検知は[カスタム日本語校正](https://github.com/knttnk/custom-japanese-proofreading/issues)に報告してください。",
+    "expected": "だいぶん",
+    "tokens": [
+      {
+        "surface_form": "大分",
+        "pos": "名詞"
+      },
+      { "pos": "動詞" }
+    ]
+  },
+  {
+    "message": "「大分（だいぶん）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。誤検知は[カスタム日本語校正](https://github.com/knttnk/custom-japanese-proofreading/issues)に報告してください。",
+    "expected": "だいぶん",
+    "tokens": [
+      {
+        "surface_form": "大分",
+        "pos": "名詞"
+      },
+      { "pos": "形容詞" }
+    ]
+  },
+  {
+    "message": "「大分（だいぶん）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。誤検知は[カスタム日本語校正](https://github.com/knttnk/custom-japanese-proofreading/issues)に報告してください。",
+    "expected": "だいぶん",
+    "tokens": [
+      {
+        "surface_form": "大分",
+        "pos": "名詞"
+      },
+      { "pos": "形容動詞" }
+    ]
+  },
+  {
+    "message": "「大変」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "たいへん",
+    "tokens": [
+      {
+        "surface_form": "大変",
+        "pos": "名詞"
+      }
+    ]
+  },
+  {
+    "message": "「沢山」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "たくさん",
+    "tokens": [
+      {
+        "surface_form": "沢山",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「丈（だけ）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "だけ",
+    "tokens": [
+      {
+        "pos_detail_1": "代名詞",
+        "pos": "名詞"
+      },
+      {
+        "surface_form": "丈",
+        "pos": "名詞"
+      }
+    ]
+  },
+  {
+    "message": "「丈（だけ）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "だけ",
+    "tokens": [
+      { "pos_detail_1": "数" },
+      { "surface_form": "つ" },
+      {
+        "surface_form": "丈",
+        "pos": "名詞"
+      }
+    ]
+  },
+  {
+    "message": "「唯（ただ）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ただ",
+    "tokens": [{ "surface_form": "唯" }]
+  },
+  {
+    "message": "「只（ただ）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ただ",
+    "tokens": [{ "surface_form": "只" }]
+  },
+  {
+    "message": "「為」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ため",
+    "tokens": [{ "surface_form": "為" }]
+  },
+  {
+    "message": "「一寸（ちょっと）」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ちょっと",
+    "tokens": [
+      {
+        "surface_form": "一寸",
+        "pos": "副詞"
+      }
+    ]
+  },
+  {
+    "message": "「一寸」は，「ちょっと」または「1寸」と書きます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ちょっと",
+    "tokens": [
+      {
+        "surface_form": "一寸",
+        "pos": "名詞"
+      }
+    ]
+  },
+  {
+    "message": "「序で」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ついで",
+    "tokens": [{ "surface_form": "序で" }]
+  },
+  {
+    "message": "「遂に/終に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ついに",
+    "tokens": [{ "surface_form": "終に" }]
+  },
+  {
+    "message": "「遂に/終に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "ついに",
+    "tokens": [{ "surface_form": "遂に" }]
+  },
+  {
+    "message": "「次」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "つぎ",
+    "tokens": [
+      {
+        "surface_form": "次",
+        "pos": "名詞",
+        "pos_detail_1": "一般",
+        "basic_form": "次",
+        "reading": "ツギ"
+      },
+      {
+        "pos": "助詞"
+      }
+    ]
+  },
+  {
+    "message": "「次」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "つぎ",
+    "tokens": [
+      {
+        "surface_form": "次",
+        "pos": "名詞",
+        "pos_detail_1": "一般",
+        "basic_form": "次",
+        "reading": "ツギ"
+      },
+      {
+        "pos": "助動詞"
+      }
+    ]
+  },
+  {
+    "message": "「次」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "つぎに",
+    "tokens": [
+      {
+        "surface_form": "次に",
+        "reading": "ツギニ"
+      }
+    ]
+  },
+  {
+    "message": "「積もり」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "つもり",
+    "tokens": [
+      {
+        "pos": "動詞",
+        "conjugated_form": "基本形"
+      },
+      {
+        "surface_form": "積もり"
+      }
+    ]
+  }
+]

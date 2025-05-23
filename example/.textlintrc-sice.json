@@ -4,9 +4,7 @@
   },
   "rules": {
     "@textlint-ja/morpheme-match": {
-      "dictionaryPathList": [
-        "./sice-dictionary.json"
-      ]
+      "dictionaryPathList": ["./sice-morpheme-match.json"]
     },
     "@textlint-ja/no-synonyms": true,
     "@textlint-ja/textlint-rule-no-dropping-i": true,
@@ -30,23 +28,9 @@
       "no-doubled-joshi": {
         "min_interval": 1,
         "strict": false,
-        "allow": [
-          "も",
-          "や"
-        ],
-        "separatorCharacters": [
-          ".",
-          "．",
-          "。",
-          "?",
-          "!",
-          "？",
-          "！"
-        ],
-        "commaCharacters": [
-          "、",
-          "，"
-        ]
+        "allow": ["も", "や"],
+        "separatorCharacters": [".", "．", "?", "!", "？", "！"],
+        "commaCharacters": ["，"]
       },
       "sentence-length": {
         "max": 100
@@ -71,15 +55,13 @@
       "max-ten": false,
       "max-kanji-continuous-len": {
         "max": 6,
-        "allow": [
-          "駐米日本大使館"
-        ]
+        "allow": ["計測自動制御学会", "可制御正準系"]
       },
       "arabic-kanji-numbers": true,
       "no-mix-dearu-desumasu": false,
       "ja-no-mixed-period": {
-        "periodMark": "。",
-        "allowPeriodMarks": [],
+        "periodMark": "．",
+        "allowPeriodMarks": ["？", "！"],
         "allowEmojiAtEnd": false,
         "forceAppendPeriod": false
       },
@@ -92,16 +74,14 @@
       "no-invalid-control-character": false,
       "no-zero-width-spaces": false,
       "no-exclamation-question-mark": {
-        "allow": [
-          "Yahoo!"
-        ],
+        "allow": ["Yahoo!"],
         "allowHalfWidthExclamation": false,
-        "allowFullWidthExclamation": false,
+        "allowFullWidthExclamation": true,
         "allowHalfWidthQuestion": false,
-        "allowFullWidthQuestion": false
+        "allowFullWidthQuestion": true
       },
       "no-hankaku-kana": true,
-      "ja-no-weak-phrase": true,
+      "ja-no-weak-phrase": false,
       "ja-no-successive-word": {
         "allow": [],
         "allowOnomatopee": true
@@ -133,9 +113,7 @@
       "@textlint-rule/no-unmatched-pair": true
     },
     "prh": {
-      "rulePaths": [
-        "prh.yml"
-      ]
+      "rulePaths": ["sice-prh.yml"]
     }
   }
 }

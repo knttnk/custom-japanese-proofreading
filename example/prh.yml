@@ -1,13 +1,13 @@
 version: 1
 rules:
-  - expected: $1\verb|変な文字?|$3
+  # 正規表現には強制でgフラグが付く
+  - expected: $1?$4
     patterns:
       # 孤立した一文字
-      # ただし，「B区分」と「C++」だけは許す
-      - /(\b)[a-zA-Z](?:(区分|\+\+)|(\b))/
-      - ts
-      - st
-    regexpMustEmpty: $2
+      # ただし，「C++」だけは許す
+      - /(\b)([a-zA-Z])(?:(区分|\+\+)|(\b))/
+    regexpMustEmpty: $3
+    prh: 不自然な文字があります。  # エラーメッセージをカスタマイズできます。
 
   # 大文字小文字全角半角の統一
   - expected: Cookie

@@ -48,7 +48,8 @@
 
 ### [prh](https://github.com/prh/prh)
 
-cookieを保存するか。s
+prh.yml参照。
+cookieを保存するsか。
 
 ## [preset-japanese](https://github.com/textlint-ja/textlint-rule-preset-japanese)
 
@@ -216,3 +217,5 @@ Markdownのソースコードを見ること。
 リイｒースはエラーではない。
 <!-- textlint-enable ja-technical-writing/ja-unnatural-alphabet -->
 再びリイｒースはエラーだ。
+
+併せてあるいは大きい。
