@@ -22,7 +22,5 @@
 	},
 	"ltex.enabled": false,
 	"spellright.language": [],
-	"spellright.documentTypes": [
-		"plaintext"
-	]
+	"spellright.documentTypes": []
 }

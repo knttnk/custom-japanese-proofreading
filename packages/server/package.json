@@ -15,6 +15,7 @@
 	},
 	"dependencies": {
 		"@custom-japanese-proofreading/common": "^0.1.0",
+		"@textlint-ja/textlint-rule-morpheme-match": "^2.0.0",
 		"@textlint-ja/textlint-rule-no-dropping-i": "^3.0.0",
 		"@textlint-ja/textlint-rule-no-insert-dropping-sa": "^2.0.1",
 		"@textlint-ja/textlint-rule-no-insert-re": "^1.0.2",
