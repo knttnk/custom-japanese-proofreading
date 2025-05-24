@@ -2,6 +2,7 @@
 .vscode/**
 **/*.ts
 **/*.map
+eslint.config.mjs
 # .gitignore  # このファイルは勝手に除外される。逆に、書いてしまうと中身もついでに除外されてしまう。
 # devDependencies はデフォルトで除外されるので、明示的に除外する必要はない
 **/tsconfig.**
@@ -21,6 +22,8 @@
 **/.*rc
 !**/*textlintrc*
 ./.*
+images/
+!images/icon/icon.png
 # !client/node_modules/vscode-jsonrpc/**
 # !client/node_modules/vscode-languageclient/**
 # !client/node_modules/vscode-languageserver-protocol/**
