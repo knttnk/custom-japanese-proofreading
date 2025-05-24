@@ -1,6 +1,6 @@
 
 import { Connection } from 'vscode-languageserver/node';
-import { APP_CONFIG_HEADER, APP_ID } from './index';
+import { APP_CONFIG_HEADER } from './index';
 
 export enum CheckOn {
 	/** 保存時 */
@@ -209,7 +209,7 @@ export class UserSettings {
 			// 	}
 			// }
 			console.debug(
-				`[${APP_ID}]: config of ${resourceUri} => ${JSON.stringify(ret)}`,
+				`    設定 ${resourceUri} => ${JSON.stringify(ret)}`,
 			);
 			this.ofDocuments.set(resourceUri, ret);
 		}
@@ -229,7 +229,7 @@ export class UserSettings {
 		// 設定が記録されていない場合は、VSCode側の設定を取得
 		if (!result) {
 			console.warn(
-				`[${APP_ID}] getDocumentSettings: ${resourceUri} is not found.`);
+				`getDocumentSettings: ${resourceUri} が見つかりませんでした。`);
 			return this.globalDefault;
 		}
 		return result;

@@ -26,7 +26,7 @@ debugModule.enable("rc-config-loader");  // デフォルトでtextlintrcの読�
 // TODO: 色がわかりにくいので、このモジュール以外の部分を色を変える。
 
 // 自分
-import { APP_ID, APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
+import { APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
 
 // バリデーション（textlint）を実施
 export async function validateTextDocument(
@@ -41,31 +41,34 @@ export async function validateTextDocument(
 	const userConfigPaths = settings.textlintrcPaths;
 	for (let textlintrcIndex = 0; textlintrcIndex < userConfigPaths.length; textlintrcIndex++) {
 		const userConfigPath = userConfigPaths[textlintrcIndex];
+		let configPath: string = userConfigPath;
 		let myDescriptor;
 		if (userConfigPath === ":default:") {
 			// デフォルトのtextlintrcを使用
+			configPath = textlintPresetIcsmediaConfigPath;
 			myDescriptor = await loadTextlintrc({
 				configFilePath: textlintPresetIcsmediaConfigPath,
 			});
 			console.info(
-				`[${APP_ID}]: Option using ${textlintPresetIcsmediaConfigPath}`,
+				`オプション: ${textlintPresetIcsmediaConfigPath}`,
 			);
 		} else {
 			// ユーザ設定のtextlintrcファイルのパスを取得
 			const textlintrcPath: string = path.resolve(userConfigPath);
+			configPath = textlintrcPath;
 			console.info(
-				`[${APP_ID}]: textlintrcPath: ${textlintrcPath}`,
+				`textlintrcPath:\n    ${textlintrcPath}`,
 			);
 
 			// 存在とファイルかを確認。でなければデフォルトのtextlintrcを使用
 			if (!fs.existsSync(textlintrcPath)) {
 				console.error(
-					`[${APP_ID}]: textlintrcPath is not found. ${textlintrcPath}`,
+					`textlintrcPath が見つかりませんでした:\n    ${textlintrcPath}`,
 				);
 				continue;
 			} else if (!fs.statSync(textlintrcPath).isFile()) {
 				console.error(
-					`[${APP_ID}]: textlintrcPath is not a file. ${textlintrcPath}`,
+					`textlintrcPath がファイルではありませんでした:\n    ${textlintrcPath}`,
 				);
 				continue;
 			}
@@ -77,7 +80,7 @@ export async function validateTextDocument(
 			});
 			// デフォルトと一緒なら、なにもしない
 			if (myDescriptor.rule.allDescriptors.length === 0) {
-				console.error(`[${APP_ID}]: Possibly failed to load textlintrc file ${textlintrcPath}`);
+				console.error(`textlintrcファイルの読み込みに失敗したと思われます:\n    ${textlintrcPath}`);
 			}
 		}
 
@@ -123,10 +126,37 @@ export async function validateTextDocument(
 		const linter = createLinter({
 			descriptor: myDescriptor,
 		});
-		const results: TextlintResult = await linter.lintText(
-			text,
-			URI.parse(textDocument.uri).fsPath,
-		);
+		let results: TextlintResult;
+		try {
+			results = await linter.lintText(
+				text,
+				URI.parse(textDocument.uri).fsPath,
+			);
+		} catch (error) {
+			// textlintの実行に失敗した場合は、エラーを出力
+			console.error(`校正に失敗しました:\n    ${error}`);
+			continue;
+		}
+
+		// 内部で設定ファイルの読み込みにrequireを使っているモジュールで、
+		// 設定が変更されたときに反映できるようキャッシュを削除
+		for (const descriptor of myDescriptor.rule.allDescriptors) {
+			if (descriptor.id === "@textlint-ja/morpheme-match") {
+				const options = Object(descriptor.rawOptions);
+				const paths = options["dictionaryPathList"] as string[];
+				if (!paths) {
+					continue;
+				}
+				for (const p of paths) {
+					// 設定ファイルのパスを取得
+					const dir = path.dirname(configPath);
+					const morphemeConfigPath = path.resolve(dir, p);
+					// キャッシュを削除
+					delete require.cache[morphemeConfigPath];
+				}
+				break;
+			}
+		}
 
 		// エラーが存在する場合
 		if (results.messages.length) {

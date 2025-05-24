@@ -20,7 +20,7 @@ import {
 import { validateTextDocument } from './validation';
 
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { APP_NAME, APP_ID, UserSettings, APP_CONFIG_HEADER, CheckOn } from '@custom-japanese-proofreading/common';
+import { APP_NAME, UserSettings, APP_CONFIG_HEADER, CheckOn } from '@custom-japanese-proofreading/common';
 
 // NodeのIPCを使用してサーバーの接続を作成
 // プレビュー/提案されたすべてのLSP機能を含む
@@ -116,10 +116,10 @@ connection.onDidChangeConfiguration((_) => {
 		userSettings.ofDocuments.clear();
 	} else {
 		console.warn(
-			`[${APP_ID}] onDidChangeConfiguration: hasConfigurationCapability is false.`
+			`onDidChangeConfiguration: hasConfigurationCapability が false です。`
 		);
 		console.warn(
-			"開発者に連絡してください。"
+			"    開発者に連絡してください。"
 		);
 	}
 

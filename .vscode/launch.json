@@ -27,8 +27,8 @@
 				"<node_internals>/**", // Node.jsの内部モジュール
 				"**/resources/app/extensions/**", // 他の拡張機能のモジュール
 				// パッケージ
-				// "**/node_modules/semver/**",
-				// "**/node_modules/get-intrinsic/**",
+				"**/node_modules/semver/**",
+				"**/node_modules/get-intrinsic/**",
 			]
 		},
 		// {
