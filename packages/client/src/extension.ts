@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
+import { workspace, ExtensionContext, window } from 'vscode';
+import { CJPNotification, CJPNotificationType, APP_ID } from '@custom-japanese-proofreading/common';
 
 // TODO: アイコンを作る
 
@@ -47,7 +48,29 @@ export function activate(context: ExtensionContext) {
 		serverOptions,
 		clientOptions
 	);
+	client.onNotification(
+		APP_ID,
+		(notification: CJPNotification) => {
+			switch (notification.type) {
+				case CJPNotificationType.error:
+					window.showErrorMessage(notification.message);
+					break;
+				case CJPNotificationType.warning:
+					window.showWarningMessage(notification.message);
+					break;
+				case CJPNotificationType.info:
+					window.showInformationMessage(notification.message);
+					break;
+				default:
+					window.showInformationMessage(
+						`不明な通知タイプ: ${notification.type} - メッセージ: ${notification.message}`,
+					);
+					break;
+			}
+		},
+	);
 	client.start();
+
 }
 
 export function deactivate(): Thenable<void> | undefined {

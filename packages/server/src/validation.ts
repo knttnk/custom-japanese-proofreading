@@ -26,7 +26,7 @@ debugModule.enable("rc-config-loader");  // デフォルトでtextlintrcの読�
 // TODO: 色がわかりにくいので、このモジュール以外の部分を色を変える。
 
 // 自分
-import { APP_NAME, UserSettings } from '@custom-japanese-proofreading/common';
+import { APP_ID, APP_NAME, UserSettings, CJPNotification, CJPNotificationType } from '@custom-japanese-proofreading/common';
 
 // バリデーション（textlint）を実施
 export async function validateTextDocument(
@@ -62,13 +62,25 @@ export async function validateTextDocument(
 
 			// 存在とファイルかを確認。でなければデフォルトのtextlintrcを使用
 			if (!fs.existsSync(textlintrcPath)) {
-				console.error(
-					`textlintrcPath が見つかりませんでした:\n    ${textlintrcPath}`,
+				const _message = `textlintrcPath が存在しませんでした:\n    ${textlintrcPath}`;
+				console.error(_message);
+				userSettings.connection.sendNotification(
+					APP_ID,
+					new CJPNotification(
+						CJPNotificationType.error,
+						_message,
+					),
 				);
 				continue;
 			} else if (!fs.statSync(textlintrcPath).isFile()) {
-				console.error(
-					`textlintrcPath がファイルではありませんでした:\n    ${textlintrcPath}`,
+				const _message = `textlintrcPath がファイルではありませんでした:\n    ${textlintrcPath}`;
+				console.error(_message);
+				userSettings.connection.sendNotification(
+					APP_ID,
+					new CJPNotification(
+						CJPNotificationType.error,
+						_message,
+					),
 				);
 				continue;
 			}
@@ -80,7 +92,15 @@ export async function validateTextDocument(
 			});
 			// デフォルトと一緒なら、なにもしない
 			if (myDescriptor.rule.allDescriptors.length === 0) {
-				console.error(`textlintrcファイルの読み込みに失敗したと思われます:\n    ${textlintrcPath}`);
+				const _message = `textlintrcファイルの読み込みに失敗したと思われます:\n    ${textlintrcPath}`;
+				console.error(_message);
+				userSettings.connection.sendNotification(
+					APP_ID,
+					new CJPNotification(
+						CJPNotificationType.error,
+						_message,
+					),
+				);
 			}
 		}
 
@@ -135,6 +155,13 @@ export async function validateTextDocument(
 		} catch (error) {
 			// textlintの実行に失敗した場合は、エラーを出力
 			console.error(`校正に失敗しました:\n    ${error}`);
+			userSettings.connection.sendNotification(
+				APP_ID,
+				new CJPNotification(
+					CJPNotificationType.error,
+					`校正に失敗しました\n\n${error}`,
+				),
+			);
 			continue;
 		}
 
