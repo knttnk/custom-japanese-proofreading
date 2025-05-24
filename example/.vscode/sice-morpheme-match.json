@@ -202,16 +202,6 @@
     ]
   },
   {
-    "message": "「兼々」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
-    "expected": "かねがね",
-    "tokens": [
-      {
-        "surface_form": "兼々",
-        "pos": "副詞"
-      }
-    ]
-  },
-  {
     "message": "「来す」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
     "expected": "きたす",
     "tokens": [
