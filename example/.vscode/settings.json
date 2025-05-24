@@ -1,7 +1,9 @@
 {
     "customJapaneseProofreading.textlintrcPaths": [
-        // "./.vscode/.textlintrc.json",
-        "./.vscode/.textlintrc-sice.json",
+        "./.vscode/.textlintrc-example.json",
+        // "./.vscode/.textlintrc-sice.json",
         // ":default:"
     ],
+    "customJapaneseProofreading.checkOn": "save",
+    "customJapaneseProofreading.maxNumberOfProblems": 100,
 }

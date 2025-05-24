@@ -1,8 +1,18 @@
 # カスタム日本語校正の例
 
+<!-- textlint-disable japanese/no-mix-dearu-desumasu,jtf-style/1.1.1.本文 -->
 ファイルだけを見るのではなく、実際に拡張機能をインストールして、エラーの表示を見ていただいたほうがいいと思います。
+VS Codeでexampleフォルダを開き、[.vscode/settings.json](.vscode/settings.json)の`textlintrcPaths`の値が`"./.vscode/.textlintrc-example.json"`だけになっていることを確認してください。
 
 ## 個別ルール
+
+### [@textlint-ja/morpheme-match](https://github.com/textlint-ja/textlint-rule-morpheme-match/)
+
+本を読んで居たら、いつの間にか猫がそこに居る。
+
+これは、形態素解析の結果をもとにした校正ルールを記述できる、強力なルールです。
+[prh](#prh)とともに本拡張機能のメイン機能と言っても過言ではありません。
+[.vscode/example-morpheme-match.json](.vscode/example-morpheme-match.json)にルールの例が記述してあります。textlintrcファイルの`rules.@textlint-ja/morpheme-match.dictionaryPathList`には、ワークスペースのルートディレクトリからではなく、textlintrcファイルから見た相対パスを書きます。
 
 ### [@textlint-ja/no-synonyms](https://github.com/textlint-ja/textlint-rule-no-synonyms)
 
@@ -48,8 +58,11 @@
 
 ### [prh](https://github.com/prh/prh)
 
-prh.yml参照。
 cookieを保存するsか。
+
+これは、形態素解析の結果をもとにした校正ルールを記述できる、強力なルールです。
+[@textlint-ja/morpheme-match](#textlint-jamorpheme-match)の設定とともに本拡張機能のメイン機能と言っても過言ではありません。
+[.vscode/example-prh.yml](.vscode/example-prh.yml)にルールの例が記述してあります。textlintrcファイルの`rules.prh.rulePaths`は、ワークスペースのルートディレクトリからではなく、textlintrcファイルから見た相対パスを書きます。
 
 ## [preset-japanese](https://github.com/textlint-ja/textlint-rule-preset-japanese)
 

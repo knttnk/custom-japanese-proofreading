@@ -1,0 +1,30 @@
+[
+  {
+    "message": "助動詞「居る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いる",
+    "tokens": [
+      {
+        "surface_form": "て",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "居る",
+        "pos": "動詞"
+      }
+    ]
+  },
+  {
+    "message": "助動詞「居る」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "いる",
+    "tokens": [
+      {
+        "surface_form": "で",
+        "pos": "助詞"
+      },
+      {
+        "basic_form": "居る",
+        "pos": "動詞"
+      }
+    ]
+  }
+]

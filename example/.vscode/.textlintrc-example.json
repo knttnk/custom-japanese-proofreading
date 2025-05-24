@@ -1,0 +1,119 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "@textlint-ja/morpheme-match": {
+      "dictionaryPathList": ["./example-morpheme-match.json"]
+    },
+    "@textlint-ja/no-synonyms": true,
+    "@textlint-ja/textlint-rule-no-dropping-i": true,
+    "@textlint-ja/textlint-rule-no-insert-dropping-sa": true,
+    "@textlint-ja/textlint-rule-no-insert-re": true,
+    "ja-joyo-or-jinmeiyo-kanji": true,
+    "ja-no-inappropriate-words": true,
+    "ja-no-orthographic-variants": true,
+    "prefer-tari-tari": true,
+    "preset-ja-technical-writing": {
+      "@textlint-rule/no-unmatched-pair": true,
+      "arabic-kanji-numbers": true,
+      "ja-no-abusage": true,
+      "ja-no-mixed-period": {
+        "allowEmojiAtEnd": false,
+        "allowPeriodMarks": [],
+        "forceAppendPeriod": false,
+        "periodMark": "。"
+      },
+      "ja-no-redundant-expression": {
+        "dictOptions": {
+          "dict1": {
+            "disabled": false
+          },
+          "dict2": {
+            "disabled": false
+          },
+          "dict3": {
+            "disabled": false
+          },
+          "dict4": {
+            "disabled": false
+          },
+          "dict5": {
+            "disabled": false
+          },
+          "dict6": {
+            "disabled": false
+          }
+        }
+      },
+      "ja-no-successive-word": {
+        "allow": [],
+        "allowOnomatopee": true
+      },
+      "ja-no-weak-phrase": true,
+      "ja-unnatural-alphabet": true,
+      "max-comma": {
+        "max": 3
+      },
+      "max-kanji-continuous-len": {
+        "allow": ["駐米日本大使館"],
+        "max": 6
+      },
+      "max-ten": false,
+      "no-double-negative-ja": false,
+      "no-doubled-conjunction": false,
+      "no-doubled-conjunctive-particle-ga": false,
+      "no-doubled-joshi": false,
+      "no-dropping-the-ra": false,
+      "no-exclamation-question-mark": {
+        "allow": ["Yahoo!"],
+        "allowFullWidthExclamation": false,
+        "allowFullWidthQuestion": false,
+        "allowHalfWidthExclamation": false,
+        "allowHalfWidthQuestion": false
+      },
+      "no-hankaku-kana": true,
+      "no-invalid-control-character": false,
+      "no-mix-dearu-desumasu": false,
+      "no-nfd": false,
+      "no-zero-width-spaces": false,
+      "sentence-length": false
+    },
+    "preset-japanese": {
+      "max-ten": {
+        "max": 3
+      },
+      "no-double-negative-ja": true,
+      "no-doubled-conjunction": true,
+      "no-doubled-conjunctive-particle-ga": true,
+      "no-doubled-joshi": {
+        "allow": ["も", "や"],
+        "commaCharacters": ["、", "，"],
+        "min_interval": 1,
+        "separatorCharacters": [".", "．", "。", "?", "!", "？", "！"],
+        "strict": false
+      },
+      "no-dropping-the-ra": true,
+      "no-invalid-control-character": true,
+      "no-kangxi-radicals": true,
+      "no-mix-dearu-desumasu": {
+        "preferInBody": "である",
+        "preferInHeader": "である",
+        "preferInList": "である",
+        "strict": true
+      },
+      "no-nfd": true,
+      "no-zero-width-spaces": true,
+      "sentence-length": {
+        "max": 100
+      }
+    },
+    "preset-jtf-style": {
+      "1.2.1.句点（。）と読点（、）": false,
+      "1.2.2.ピリオド(.)とカンマ(,)": false
+    },
+    "prh": {
+      "rulePaths": ["example-prh.yml"]
+    }
+  }
+}
