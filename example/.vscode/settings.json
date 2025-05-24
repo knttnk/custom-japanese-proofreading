@@ -1,7 +1,7 @@
 {
     "customJapaneseProofreading.textlintrcPaths": [
-        // "./.textlintrc.json",
-        "./.textlintrc-sice.json",
+        // "./.vscode/.textlintrc.json",
+        "./.vscode/.textlintrc-sice.json",
         // ":default:"
     ],
 }

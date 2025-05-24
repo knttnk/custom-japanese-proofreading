@@ -2,6 +2,7 @@ version: 1
 rules:
   - expected: $1，
     patterns:
+      # prh のルールは長い方から記述すると良い
       # 英語に続かない「,」は禁止
       # [ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー] は日本語文字を表す
       - /([ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー])(?:,\s*)/
@@ -11,8 +12,7 @@ rules:
     prh: 読点には「，」を使います  # 警告メッセージをカスタマイズできる。
   - expected: あいまって
     patterns:
-    - 相俟って
-    - 相まって
+    - /相[俟ま]って/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: あえて
     patterns:
@@ -24,9 +24,7 @@ rules:
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: あらゆる
     patterns:
-    - 汎ゆる  # prh のルールは長い方から記述すると良い
-    - 総る
-    - 凡る
+    - /(汎ゆ|総|凡)る/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: あるいは
     patterns:
@@ -128,9 +126,7 @@ rules:
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: かつて
     patterns:
-    - 嘗て
-    - 曾て
-    - 甞て
+    - /[嘗曾甞]て/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: かなり
     patterns:
@@ -138,11 +134,7 @@ rules:
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: かねがね
     patterns:
-    - 兼ね兼ね
-    - 兼兼
-    - 兼々
-    - 予予
-    - 予々
+    - /([兼予]ね?)([兼予]ね?|々)/ 
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: かねて
     patterns:
@@ -150,13 +142,11 @@ rules:
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: ここ
     patterns:
-    - 此所
-    - 此処
+    - /此[所処]/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: ことさら
     patterns:
-    - 殊更
-    - 事更
+    - /[殊事]更/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: ごとく
     patterns:
@@ -164,10 +154,7 @@ rules:
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: こ
     patterns:
-    - 此
-    - 是
-    - 之
-    - 惟
+    - /[此是之惟]/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
   - expected: さしあた
     patterns:
@@ -311,183 +298,130 @@ rules:
     patterns:
     - 丁寧
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: とかく
     patterns:
-    - 相俟って
-    - 相まって
+    - 兎角
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: どこ
     patterns:
-    - 相俟って
-    - 相まって
+    - 何処
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: どの
     patterns:
-    - 相俟って
-    - 相まって
+    - 何の
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: とても
     patterns:
-    - 相俟って
-    - 相まって
+    - 迚も
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: とりあえず
     patterns:
-    - 相俟って
-    - 相まって
+    - /取り?敢えず/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ないし
     patterns:
-    - 相俟って
-    - 相まって
+    - 乃至
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: なかなか
     patterns:
-    - 相俟って
-    - 相まって
+    - 仲々
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ながら
     patterns:
-    - 相俟って
-    - 相まって
+    - /乍ら?/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: なぜ
     patterns:
-    - 相俟って
-    - 相まって
+    - 何故
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: l
     patterns:
-    - 相俟って
-    - 相まって
+    - l
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: なるべく
     patterns:
-    - 相俟って
-    - 相まって
+    - /成る可く?/
+    - /成る?可く/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ほとんど
     patterns:
-    - 相俟って
-    - 相まって
+    - 殆ど
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ほぼほぼ
     patterns:
-    - 相俟って
-    - 相まって
+    - 略々
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ますます
     patterns:
-    - 相俟って
-    - 相まって
+    - 益々
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: みな$1
     patterns:
-    - 相俟って
-    - 相まって
+    - /[見看][做な]([さしすせそ])/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: むしろ
     patterns:
-    - 相俟って
-    - 相まって
+    - 寧ろ
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: めいりょう
     patterns:
-    - 相俟って
-    - 相まって
+    - 明瞭
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もしも
     patterns:
-    - 相俟って
-    - 相まって
+    - 若しも
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もしくは
     patterns:
-    - 相俟って
-    - 相まって
+    - 若しくは
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もちろん
     patterns:
-    - 相俟って
-    - 相まって
+    - 勿論
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もって
     patterns:
-    - 相俟って
-    - 相まって
+    - /以っ?て/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もっぱら
     patterns:
-    - 相俟って
-    - 相まって
+    - 専ら
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: もとより
     patterns:
-    - 相俟って
-    - 相まって
+    - /[個元素基許]より/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: やっかい
     patterns:
-    - 相俟って
-    - 相まって
+    - 厄介
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: やはり
     patterns:
-    - 相俟って
-    - 相まって
+    - /矢張り?/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: やむをえず
     patterns:
-    - 相俟って
-    - 相まって
+    - /[已止や]むを得ず/
+    - /[已止]むを[得え]ず/
+    - /不得[巳止]/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ややもすれば
     patterns:
-    - 相俟って
-    - 相まって
+    - /動も?すれば/
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: ようやく
     patterns:
-    - 相俟って
-    - 相まって
+    - 漸く
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: わが
     patterns:
-    - 相俟って
-    - 相まって
+    - 我が
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: わざわざ
     patterns:
-    - 相俟って
-    - 相まって
+    - 態々
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
+  - expected: われわれ
     patterns:
-    - 相俟って
-    - 相まって
-    prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
-    patterns:
-    - 相俟って
-    - 相まって
-    prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
-    patterns:
-    - 相俟って
-    - 相まって
-    prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
-    patterns:
-    - 相俟って
-    - 相まって
-    prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
-    patterns:
-    - 相俟って
-    - 相まって
-    prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
-  - expected: あいまって
-    patterns:
-    - 相俟って
-    - 相まって
+    - 我々
     prh: ひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。
