@@ -718,7 +718,27 @@
   {
     "message": "「下/元/素/基/許に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
     "expected": "もとに",
-    "tokens": [{ "reading": "モト" }, { "surface_form": "に" }]
+    "tokens": [{ "surface_form": "下" }, { "surface_form": "に" }]
+  },
+  {
+    "message": "「下/元/素/基/許に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "もとに",
+    "tokens": [{ "surface_form": "元" }, { "surface_form": "に" }]
+  },
+  {
+    "message": "「下/元/素/基/許に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "もとに",
+    "tokens": [{ "surface_form": "素" }, { "surface_form": "に" }]
+  },
+  {
+    "message": "「下/元/素/基/許に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "もとに",
+    "tokens": [{ "surface_form": "基" }, { "surface_form": "に" }]
+  },
+  {
+    "message": "「下/元/素/基/許に」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
+    "expected": "もとに",
+    "tokens": [{ "surface_form": "許" }, { "surface_form": "に" }]
   },
   {
     "message": "「物」はひらきます[計測自動制御学会 論文執筆の手引き](https://www.sice.or.jp/trans/trans_tebiki.html)。",
