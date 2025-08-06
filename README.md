@@ -4,7 +4,9 @@
 
 [textlint](https://github.com/textlint/textlint)を用いて、VS Code上でテキストファイル（Markdown、HTML、LaTeX、Re:VIEW含む）の日本語の文章を自動校正する拡張機能です。
 
-正規表現が使える[prh](example/all-rules.md#prh)パッケージや、形態素解析の結果が使える[textlint-rule-morpheme-match](example/all-rules.md#textlint-jamorpheme-match)パッケージをサポートしており、柔軟な校正ルールの設定が可能です。
+[all-rules.md](example/all-rules.md)にあるようなすぐに使えるプリセットルールが簡単に使えます。textlintをインストールする必要はありませんし、それによってnpm環境を汚すこともありません。
+
+さらに、正規表現が使える[prh](example/all-rules.md#prh)パッケージや、形態素解析の結果が使える[textlint-rule-morpheme-match](example/all-rules.md#textlint-jamorpheme-match)パッケージをサポートしており、柔軟な校正ルールの設定が可能です。
 
 ![スクリーンショット](images/doc/example.png)
 
@@ -24,7 +26,7 @@
 
 settings.jsonは次のような見た目になります。
 
-```json
+```jsonc
 // .vscode/settings.json
 {
     "customJapaneseProofreading.textlintrcPaths": [
